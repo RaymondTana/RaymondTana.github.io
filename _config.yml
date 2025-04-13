@@ -3,7 +3,9 @@ description: "My CV and Projects"
 author: "Raymond Tana"
 baseurl: "" 
 custom_css: my_assets/css/custom.css
-theme: minimal-mistakes-jekyll
+# theme: minimal-mistakes-jekyll
+remote_theme: "mmistakes/minimal-mistakes"
+theme: null
 
 # Defaults
 defaults:
