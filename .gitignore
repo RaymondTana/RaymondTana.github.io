@@ -1,0 +1,31 @@
+# ----------------------------
+# Jekyll Build Output
+# ----------------------------
+_site/
+.jekyll-metadata
+.sass-cache/
+
+# ----------------------------
+# Bundler-specific files/directories
+# ----------------------------
+.bundle/
+
+# ----------------------------
+# Ruby specific files
+# ----------------------------
+*.gem
+*.rbc
+.rbenv-vars
+
+# ----------------------------
+# System files
+# ----------------------------
+.DS_Store
+Thumbs.db
+
+# ----------------------------
+# Editor temporary files
+# ----------------------------
+*~
+*.swp
+*.swo
