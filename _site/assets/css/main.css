@@ -1297,4 +1297,3 @@ body { display: -webkit-box; display: -ms-flexbox; display: flex; min-height: 10
   .page__hero-caption a { color: #000 !important; }
   /* Hide the following elements on print ========================================================================== */
   .masthead, .toc, .page__share, .page__related, .pagination, .ads, .page__footer, .page__comments-form, .author__avatar, .author__content, .author__urls-wrapper, .nav__list, .sidebar, .adsbygoogle { display: none !important; height: 1px !important; } }
-.page, .layout--single .page, .layout--archive .archive, .page__content, .post-content { max-width: calc(100vw - 200px); margin-left: auto !important; margin-right: auto !important; padding-left: 1.5rem; padding-right: 1.5rem; box-sizing: border-box; }
