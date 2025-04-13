@@ -18,4 +18,4 @@ You can find my current résumé and CV in the [Résumé and CV](cv/index.html) 
 
 ## Coding Projects
 
-On this site I've highlighted some of my favorite coding projects. Read more about them in the [Projects](projects.html) page.
+On this site I've highlighted some of my favorite coding projects. Read more about them in the [Projects](projects/index.html) page.
