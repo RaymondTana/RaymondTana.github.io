@@ -55,7 +55,7 @@
   <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Raymond Tana Feed">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script type="text/javascript">
+<script>
   document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
   
 </script>
@@ -73,9 +73,16 @@
 
 <!-- end custom head snippets -->
 
+    <link rel="stylesheet" href="/my_assets/css/custom.css">
+    <style>
+      .page {
+        max-width: calc(100vw - 200px);
+        margin: 0 auto;
+      }
+    </style>
   </head>
 
-  <body class="layout--single">
+  <body class="layout--single" dir="ltr">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -101,6 +108,12 @@
                 
                 
               >Home</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/cv/"
+                
+                
+              >CV</a>
             </li><li class="masthead__menu-item">
               <a
                 href="/projects/"
@@ -158,12 +171,18 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="projects">Projects</h1>
-
-<p>Welcome to my Projects page. Here you’ll find a collection of projects I’ve worked on.</p>
+        <p>Welcome to my Projects page. Here you’ll find a collection of coding projects I’ve worked on.</p>
 
 <ul>
-  <li><a href="Lean4_Work.html">Lean4 Work</a></li>
+  <li><a href="pages/Lean4_Work.html">Lean4 Work</a></li>
+  <li><a href="pages/Caclulus_with_Jupyter.md">Calculus-with-Jupyter</a></li>
+  <li><a href="pages/Square_Expenditures.html">Square Expenditures</a></li>
+  <li><a href="pages/AP_Outcomes.html">AP Outcomes and Universities</a></li>
+  <li><a href="pages/Trace.html">Trace: Seismic Human Activity</a></li>
+  <li><a href="pages/ECoS_GHG_Inventory.html">ECoS Greenhouse Gas Inventory</a></li>
+  <li><a href="pages/CCSG_GHG_Inventory.html">CCSG Greenhouse Gas Inventory</a></li>
+  <li><a href="pages/KA.html">Khan Academy</a></li>
+  <li><a href="pages/CH_Robinson.html">CH Robinson Trucking Costs</a></li>
 </ul>
 
         
@@ -181,6 +200,7 @@
       
 
       
+
     </div>
 
     
@@ -212,7 +232,7 @@
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2025 <a href="http://localhost:4000">Raymond Tana</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2025 <a href="http://localhost:4000">Raymond Tana</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>
@@ -228,5 +248,27 @@
 
 
 
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <!-- MathJax -->
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
   </body>
 </html>

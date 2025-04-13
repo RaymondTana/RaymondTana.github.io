@@ -1,16 +1,21 @@
 ---
-layout: home
-title: "Personal Site"
+layout: single
+title: "Hi, I'm Raymond Tana"
+sidebar:
+  disable: true
+author_profile: true
 ---
 
-# Hi, I'm Raymond Tana
+Welcome to personal site. I'm a mathematician, data science, and developer. 
 
-Welcome to my electronic CV! I'm a [developer](https://github.com/RaymondTana) and a passionate creator of projects.
+![Raymond Tana headshot](./my_assets/images/headshot.jpeg)
 
-## Projects
+## About Me
 
-Take a look at some of my work:
-- [Lean4 Work](./projects/Lean4_Work.html)
-- More projects coming soon!
+Read about my experiences and interets in the [About Me](about/index.html) page.
 
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+You can find my current résumé and CV in the [Résumé and CV](cv/index.html) page.
+
+## Coding Projects
+
+On this site I've highlighted some of my favorite coding projects. Read more about them in the [Projects](projects.html) page.

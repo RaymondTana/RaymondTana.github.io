@@ -2,9 +2,26 @@ title: "Raymond Tana"
 description: "My CV and Projects"
 author: "Raymond Tana"
 baseurl: "" 
-# custom_css: assets/css/custom.css
-remote_theme: "mmistakes/minimal-mistakes@4.26.2"
-plugins:
-  - jekyll-remote-theme
-  - jekyll-include-cache
+custom_css: my_assets/css/custom.css
+theme: minimal-mistakes-jekyll
+
+# Defaults
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: pages #posts
+    values:
+      layout: single
+      author_profile: true
+      # read_time: true
+      # comments: # true
+      # share: true
+      # related: true
+
+
+# remote_theme: "mmistakes/minimal-mistakes@4.26.2"
+# plugins:
+#   - jekyll-remote-theme
+#   - jekyll-include-cache
 # theme: minimal-mistakes-jekyll

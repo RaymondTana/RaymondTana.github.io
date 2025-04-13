@@ -10,7 +10,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Personal Site - Raymond Tana</title>
+<!-- begin _includes/seo.html --><title>Hi, I’m Raymond Tana</title>
 <meta name="description" content="My CV and Projects">
 
 
@@ -18,7 +18,7 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Raymond Tana">
-<meta property="og:title" content="Personal Site">
+<meta property="og:title" content="Hi, I’m Raymond Tana">
 <meta property="og:url" content="http://localhost:4000/">
 
 
@@ -65,7 +65,7 @@
   <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Raymond Tana Feed">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script type="text/javascript">
+<script>
   document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
   
 </script>
@@ -83,9 +83,16 @@
 
 <!-- end custom head snippets -->
 
+    <link rel="stylesheet" href="/my_assets/css/custom.css">
+    <style>
+      .page {
+        max-width: calc(100vw - 200px);
+        margin: 0 auto;
+      }
+    </style>
   </head>
 
-  <body class="layout--home">
+  <body class="layout--single" dir="ltr">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -111,6 +118,12 @@
                 
                 
               >Home</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/cv/"
+                
+                
+              >CV</a>
             </li><li class="masthead__menu-item">
               <a
                 href="/projects/"
@@ -141,43 +154,162 @@
 
 
 
+
+
 <div id="main" role="main">
   
-
-
-  <div class="archive">
-    
-      <h1 id="page-title" class="page__title">Personal Site</h1>
-    
-    <h1 id="hi-im-raymond-tana">Hi, I’m Raymond Tana</h1>
-
-<p>Welcome to my electronic CV! I’m a <a href="https://github.com/RaymondTana">developer</a> and a passionate creator of projects.</p>
-
-<h2 id="projects">Projects</h2>
-
-<p>Take a look at some of my work:</p>
-<ul>
-  <li><a href="./projects/Lean4_Work.html">Lean4 Work</a></li>
-  <li>More projects coming soon!</li>
-</ul>
-
-<script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
-
-
-
-<h3 class="archive__subtitle">Recent Posts</h3>
-
-
-
-
-<div class="entries-list">
+  <div class="sidebar sticky">
   
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url"></a>
+    </h3>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
 </div>
 
-
-
-
+  
+    
+      
+      
+      
+      
+    
+    
+  
   </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Hi, I’m Raymond Tana">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="http://localhost:4000/" itemprop="url">Hi, I’m Raymond Tana
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>Welcome to personal site. I’m a mathematician, data science, and developer.</p>
+
+<p><img src="./my_assets/images/headshot.jpeg" alt="Raymond Tana headshot" /></p>
+
+<h2 id="about-me">About Me</h2>
+
+<p>Read about my experiences and interets in the <a href="about/index.html">About Me</a> page.</p>
+
+<p>You can find my current résumé and CV in the <a href="cv/index.html">Résumé and CV</a> page.</p>
+
+<h2 id="coding-projects">Coding Projects</h2>
+
+<p>On this site I’ve highlighted some of my favorite coding projects. Read more about them in the <a href="projects.html">Projects</a> page.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+      </footer>
+
+      
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
 </div>
 
       
@@ -202,7 +334,7 @@
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2025 <a href="http://localhost:4000">Raymond Tana</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2025 <a href="http://localhost:4000">Raymond Tana</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>
@@ -218,5 +350,27 @@
 
 
 
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <!-- MathJax -->
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
   </body>
 </html>
