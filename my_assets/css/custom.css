@@ -18,10 +18,23 @@
 .layout--archive .archive,
 .page__content,
 .post-content {
-  max-width: calc(100vw - 200px); //if you want more fluid width
+  max-width: calc(100vw - 200px);
   margin-left: auto !important;
   margin-right: auto !important;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   box-sizing: border-box;
+}
+
+/* MOBILE FRIENDLY OVERRIDE */
+@media (max-width: 768px) {
+  .page,
+  .layout--single .page,
+  .layout--archive .archive,
+  .page__content,
+  .post-content {
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
