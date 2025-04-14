@@ -5,6 +5,7 @@ title: "Projects"
 
 Welcome to my Projects page. Here you'll find a collection of coding projects I've worked on.
 
+- [Manim](pages/Manim.html)
 - [Lean4 Work](pages/Lean4_Work.html)
 - [Calculus-with-Jupyter](pages/Calculus_with_Jupyter.html)
 - [Square Expenditures](pages/Square_Expenditures.html)
@@ -12,7 +13,7 @@ Welcome to my Projects page. Here you'll find a collection of coding projects I'
 - [Trace: Seismic Human Activity](pages/Trace.html)
 - [ECoS Greenhouse Gas Inventory](pages/ECoS_GHG_Inventory.html)
 - [CCSG Greenhouse Gas Inventory](pages/CCSG_GHG_Inventory.html)
-- [Khan Academy](pages/KA.html)
+<!-- - [Khan Academy](pages/KA.html) -->
 - [CH Robinson Trucking Costs](pages/CH_Robinson.html)
 - [State of Club Running](pages/SCR.html)
 - [Lopez Graph Games](pages/Lopez.html)

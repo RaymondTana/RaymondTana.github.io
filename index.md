@@ -16,7 +16,7 @@ Welcome to personal site. I'm a mathematician, data science, and developer.
 
 ## About Me
 
-Read about my experiences and interets in the [About Me](about/index.html) page.
+Read about my experiences and interests in the [About Me](about/index.html) page.
 
 You can find my current résumé and CV in the [Résumé and CV](cv/index.html) page.
 
