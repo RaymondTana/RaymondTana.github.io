@@ -5,6 +5,10 @@ title: "About Me"
 
 I am a PhD candidate in Mathematics at Penn State University. 
 
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/raymond-tana-0840121a7/)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)](https://github.com/RaymondTana)
+[![Blog](https://img.shields.io/badge/Sifter_Blog-black?logo=ghost&logoColor=white)](https://sifter.ghost.io/)
+
 ## Personal Information
 - My co-advisors at Penn State are [Dr. Linda Westrick](http://www.personal.psu.edu/lzw299/) and [Dr. Jan Reimann](https://science.psu.edu/math/people/jsr25).
 - My [LinkedIn profile](https://www.linkedin.com/in/raymond-tana-0840121a7/).

@@ -19,7 +19,9 @@ We proposed a cost-efficient and high-resolution method of urban monitorying thr
 
 ## Proposal Paper
 
-<iframe src="/assets/documents/Trace_Prototype_Phase_Proposal.pdf" width="100%" height="600px">
+[**View the PDF**](/my_assets/documents/Trace_Prototype_Phase_Proposal.pdf)
+
+<iframe src="/my_assets/documents/Trace_Prototype_Phase_Proposal.pdf" width="100%" height="600px">
     This browser does not support PDFs. Please download the PDF to view it: 
-    <a href="/assets/documents/Trace_Prototype_Phase_Proposal.pdf">Download PDF</a>.
+    <a href="/my_assets/documents/Trace_Prototype_Phase_Proposal.pdf">Download PDF</a>.
 </iframe>
