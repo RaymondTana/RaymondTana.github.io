@@ -4,7 +4,7 @@ title: "Processing JS in Khan Academy"
 nav_exclude: true
 ---
 
-[![Khan Academy](https://img.shields.io/badge/Khan_Academy-Profile-blue)](https://www.khanacademy.org/profile/kaid_952911577858513019620187/projects) [![Ghost Blogpost](https://img.shields.io/badge/Ghost_Blog-Post-black)](https://sifter.ghost.io/processingjs/) 
+[![Khan Academy](https://img.shields.io/badge/Khan_Academy_Profile-RayMan-blue)](https://www.khanacademy.org/profile/kaid_952911577858513019620187/projects) [![Ghost Blogpost](https://img.shields.io/badge/Ghost_Blog-Post-black)](https://sifter.ghost.io/processingjs/) 
 
 Khan Academy offers a free platform for burgeoning programmers to create and share visual projects using [ProcessingJS](https://www.khanacademy.org/computing/computer-programming/programming-games-visualizations/advanced-development-tools/a/using-processingjs-outside-khan-academy). At least one of my programs is [featured](https://www.khanacademy.org/computing/computer-programming/programming-games-visualizations/programming-buttons/a/what-are-buttons) on the official Khan Academy curriculum! (Look for 3D Roller Coaster.)
 
@@ -30,6 +30,7 @@ Limited 3D support (as compared to, say, Three.js), as primarily focuses on 2D g
 
 KhanAcademy.org offers an environment to write in a language based on the Processing.js library with ah HTML5 canvas immediately visible to the side of the editor in order to visualize what is being drawn. Changes are instantaneous between the editor and the canvas, so developing through this site is a pleasant experience. Typically Processing.js is embedded within an HTML file as follows:
 
+```html
 <!DOCTYPE html>
 <html>
 	<head>
@@ -49,9 +50,10 @@ KhanAcademy.org offers an environment to write in a language based on the Proces
 		<canvas id="sketch"></canvas>
 	</body>
 </html>
+```
 
 The resulting render would contain a canvas element which is interactive. 
-<!DOCTYPE html>
+
 <html>
 	<head>
 		<title>Example Processing.js Embedding</title>
@@ -119,7 +121,6 @@ var draw = function() {
 
 My first Processing.js program through Khan Academy
 
-<!DOCTYPE html>
 <html>
 	<head>
 		<title>Example Processing.js Embedding</title>
@@ -648,7 +649,6 @@ To display the scene, simply fill an array `faces` with `Face` objects created f
 ## Processing.js Components
 After creating a few programs which benefiting by offering user interactions with on-screen components like buttons and sliders, I decided that I (and other users of Processing.js) needed a better way to make use of UI components. The system of [Processing.js Components](https://sifter.ghost.io/ghost/#/editor/post/64c367a764e3be00016e0f1d) that I developed worked very similarly to that of Java's JComponents, and included functionalities for drop-downs, text fields, sliders, buttons, check boxes, check box groups, popups, icons, hyperlinked text, and even speech bubble groups. Try interacting with the components below:
 
-<!DOCTYPE html>
 <html>
 	<head>
 		<title>Example Processing.js Embedding</title>
