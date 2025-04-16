@@ -11,6 +11,7 @@ Welcome to my Projects page. Here you'll find a collection of coding projects I'
 - [Square Expenditures](pages/Square_Expenditures.html)
 
 ## JavaScript
+- [Lights Out Game](pages/Lights_Out.html)
 - [Khan Academy](pages/KA.html)
 
 ## Math
