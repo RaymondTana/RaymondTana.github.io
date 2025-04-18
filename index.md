@@ -6,7 +6,7 @@ sidebar:
 author_profile: true
 ---
 
-Welcome to personal site. I'm a mathematician, data science, and developer.
+Welcome to my personal site. I'm a mathematician, data science, and developer.
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/raymond-tana-0840121a7/)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)](https://github.com/RaymondTana)
@@ -25,3 +25,10 @@ Learn about my teaching in the [Teaching](teaching/index.html) page.
 ## Coding Projects
 
 On this site I've highlighted some of my favorite coding projects. Read more about them in the [Projects](projects/index.html) page.
+
+
+<div style="text-align:center; margin:3rem 0;">
+  <canvas id="logoRT" width="600" height="300"></canvas>
+</div>
+
+<script src="{{ '/my_assets/js/logo.js' | relative_url }}"></script>
