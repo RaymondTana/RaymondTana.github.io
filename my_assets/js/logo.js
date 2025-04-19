@@ -103,8 +103,8 @@ M35.3994,84.2065l-57.25,225s25,0,25,0c5.7188-20.3438,9.7812-34.7344,12.1562-43.1
   /* =====================================================
      3. Fourier helpers
      ===================================================== */
-     const HARMONICS = 120;                // ±HARMONICS terms
-     const SAMPLES   = 300;               // integration samples
+     const HARMONICS = 150;                // ±HARMONICS terms
+     const SAMPLES   = 400;               // integration samples
      const TWO_PI    = 2 * Math.PI;
      
      function fourierCoeffs(pathFn) {
