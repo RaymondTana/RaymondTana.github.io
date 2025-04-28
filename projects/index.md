@@ -10,7 +10,8 @@ Welcome to my Projects page. Here you'll find a collection of coding projects I'
 - [CH Robinson Trucking Costs](pages/CH_Robinson.html)
 - [Square Expenditures](pages/Square_Expenditures.html)
 
-## JavaScript
+## JavaScript and WebGL
+- [Fractals with Shaders](pages/Fractals_with_Shaders.html)
 - [Lights Out Game](pages/Lights_Out.html)
 - [Khan Academy](pages/KA.html)
 
