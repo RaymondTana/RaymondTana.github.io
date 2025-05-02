@@ -5,21 +5,22 @@ title: "Projects"
 
 Welcome to my Projects page. Here you'll find a collection of coding projects I've worked on.
 
+## Web Development
+- [Fractals with Shaders in GLSL](pages/Fractals_with_Shaders.html)
+- [Arxivr with PHP and PostgreSQL](pages/Arxivr)
+- [Lights Out Game with JS](pages/Lights_Out.html)
+- [Khan Academy with ProcessingJS](pages/KA.html)
+  
 ## Data Science
-- [AP Outcomes and Universities](pages/AP_Outcomes.html)
-- [CH Robinson Trucking Costs](pages/CH_Robinson.html)
-- [Square Expenditures](pages/Square_Expenditures.html)
-
-## JavaScript and WebGL
-- [Fractals with Shaders](pages/Fractals_with_Shaders.html)
-- [Lights Out Game](pages/Lights_Out.html)
-- [Khan Academy](pages/KA.html)
+- [AP Outcomes and Universities with Python](pages/AP_Outcomes.html)
+- [CH Robinson Trucking Costs with R](pages/CH_Robinson.html)
+- [Square Expenditures with Dash](pages/Square_Expenditures.html)
 
 ## Math
-- [Manim](pages/Manim.html)
-- [Lean4 Work](pages/Lean4_Work.html)
-- [Calculus-with-Jupyter](pages/Calculus_with_Jupyter.html)
-- [Lopez Graph Games](pages/Lopez.html)
+- [Manim with Python](pages/Manim.html)
+- [Mathematics with Lean4](pages/Lean4_Work.html)
+- [Calculus with Jupyter](pages/Calculus_with_Jupyter.html)
+- [Lopez Graph Games with Python](pages/Lopez.html)
 
 ## Reports
 - [Trace: Seismic Human Activity](pages/Trace.html)

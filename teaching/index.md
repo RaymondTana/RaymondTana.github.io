@@ -7,9 +7,9 @@ I have taught various courses at Penn State, including on Multivariable Calculus
 
 ## My Courses and Projects
 I have dedicated pages for each of the courses I've taught, as well as the accessibility-related coding project I worked on for Penn State:
-- [MATH_033: Math for Sustainability](pages/MATH_033.html)
-- [MATH_230: Multivariable Calculus](pages/MATH_230.html)
-- [MATH_486: Game Theory](pages/MATH_486.html)
+- [MATH 033: Math for Sustainability](pages/MATH_033.html)
+- [MATH 230: Multivariable Calculus](pages/MATH_230.html)
+- [MATH 486: Game Theory](pages/MATH_486.html)
 - [Accessibility](pages/Accessibility.html)
 
 ## Teaching Experience
