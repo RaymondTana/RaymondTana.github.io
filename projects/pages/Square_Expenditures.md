@@ -14,7 +14,7 @@ The app is [hosted by Render](https://square-expenditures.onrender.com).
 
 [![Last Commit](https://img.shields.io/github/last-commit/RaymondTana/Square_Expenditures)](https://github.com/RaymondTana/Square_Expenditures) [![GitHub Stars](https://img.shields.io/github/stars/RaymondTana/Square_Expenditures?style=social)](https://github.com/RaymondTana/Square_Expenditures)
 
-[👉 View the full repository on GitHub](https://github.com/RaymondTana/inventory)
+[👉 View the full repository on GitHub](https://github.com/RaymondTana/Square_Expenditures)
 
 ## Demo
 
