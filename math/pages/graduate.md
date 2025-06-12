@@ -10,7 +10,7 @@ I received my Doctor of Philosophy (PhD) in Mathematics from Penn State Universi
 
 My area of research touched several mathematical theories: Mathematical Logic, Computability Theory, Algorithmic Information Theory (AIT), and Geometric Measure Theory (GMT). In particular, I studied the applications of AIT to GMT. Below is a primer document to AIT and its potential application to GMT:
 
-[**AIT Primer Page**](/math/pages/AIT_primer.md)
+[**AIT Primer Page**](/math/pages/AIT_primer.html)
 
 ## Dissertation Defense
 
