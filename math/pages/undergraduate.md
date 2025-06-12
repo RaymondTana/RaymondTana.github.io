@@ -4,7 +4,7 @@ title: "Undergraduate Math"
 nav_exclude: true
 ---
 
-I received bachelors of sciences in both Physics and Mathematics as an undergraduate at Penn State, with honors in Mathematics through the Schreyer Honors College. 
+I received Bachelors of Science in both Mathematics and Physics as an undergraduate student at Penn State University, with honors in Mathematics through the Schreyer Honors College. 
 
 ## MASS Program
 

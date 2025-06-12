@@ -8,6 +8,8 @@ This tool helps anyone view their expenditures as reported to their email by Squ
 
 The app is [hosted by Render](https://square-expenditures.onrender.com).
 
+> You may get a timeout/memory error running the Render app, which is a feature of its free tier permitting updates no longer than 30 seconds. To deal with this, you may either use the date-selection in the settings tab to shrink the number of emails being requested, or run the app locally.
+
 ## GitHub Repository
 
 ![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=RaymondTana&repo=Square_Expenditures)
