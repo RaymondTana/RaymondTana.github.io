@@ -21,6 +21,18 @@ async function initGame() {
     }
 }
 
+// for finding a random row in the case that today doesn't exist in the CSV
+function fallbackRow(rows, today) {
+    // Simple hash → 32-bit int
+    let h = 0;
+    for (let i = 0; i < today.length; i++)
+        h = ((h << 5) - h + today.charCodeAt(i)) | 0; // bit-level hash
+
+    // Map hash to 0 … rows.length-1
+    const idx = Math.abs(h) % rows.length;
+    return rows[idx];
+}
+
 // Load and parse CSV data
 async function loadGameData() {
     try {
@@ -38,20 +50,18 @@ async function loadGameData() {
         
         // Get today's date in YYYY-MM-DD format
         const today = localISODate();
-        
+
         // Find today's row
         const todaysRow = rows.find(row => row.date === today);
         if (!todaysRow) {
-            throw new Error(`No data found for today's date: ${today}`);
+            console.warn(`No row for ${today}; falling back to a random entry.`);
+            todaysRow = fallbackRow(rows, today);
         }
-        
-        // Extract unique languages for dropdown
-        // const uniqueLanguages = [...new Set(rows.map(row => row.language))].sort();
         
         // Set game data
         gameData = {
             // languages: uniqueLanguages,
-            languages: ['Afrikaans', 'Albanian', 'Armenian', 'Bulgarian', 'Cantonese', 'Catalan', 'Chinese', 'Czech', 'Danish', 'Dutch', 'English', 'Esperanto', 'Estonian', 'Finnish', 'French', 'Georgian', 'German', 'Greek', 'Hindi', 'Hungarian', 'Icelandic', 'Indonesian', 'Irish', 'Italian', 'Latvian', 'Lithuanian', 'Macedonian', 'Malayalam', 'Nepali', 'Persian', 'Polish', 'Portuguese', 'Punjabi', 'Romanian', 'Russian', 'Serbian', 'Slovak', 'Spanish', 'Swahili', 'Swedish', 'Tamil', 'Turkish', 'Vietnamese', 'Welsh'],
+            languages: ['Afrikaans', 'Albanian', 'Armenian', 'Bulgarian', 'Cantonese', 'Catalan', 'Chinese', 'Czech', 'Danish', 'Dutch', 'Esperanto', 'Estonian', 'Finnish', 'French', 'Georgian', 'German', 'Greek', 'Hindi', 'Hungarian', 'Icelandic', 'Indonesian', 'Irish', 'Italian', 'Latvian', 'Lithuanian', 'Macedonian', 'Malayalam', 'Nepali', 'Persian', 'Polish', 'Portuguese', 'Punjabi', 'Romanian', 'Russian', 'Serbian', 'Slovak', 'Spanish', 'Swahili', 'Swedish', 'Tamil', 'Turkish', 'Vietnamese', 'Welsh'],
             todaysLanguage: todaysRow
         };
         
@@ -189,6 +199,11 @@ function showNextClue() {
             content: createAudioClue()
         },
         {
+            type: 'transcription',
+            header: '👂 Phonetic Transcription',
+            content: `<div class="text-content">${gameData.todaysLanguage.IPA}</div>`
+        },
+        {
             type: 'translation',
             header: '🔤 English Translation',
             content: `<div class="text-content">${gameData.todaysLanguage.translation}</div>`
@@ -226,7 +241,7 @@ function createAudioClue() {
 
     // Get audio file
     const audioId = "audio-clue-" + today; 
-    const srcPath = `../audio/Langr/${gameData.todaysLanguage.wave}`;
+    const srcPath = `assets/audio/${gameData.todaysLanguage.wave}`;
 
     return `
         <div class="audio-player">
@@ -355,10 +370,3 @@ document.getElementById('instructionsModal').addEventListener('click', function(
         hideInstructions();
     }
 });
-
-// CSV Reading Function (for when you have actual CSV data)
-// This is now implemented above in loadGameData() function
-
-// Expected CSV format:
-// date,language,wave,sampling_rate,sentence,translation,family_0,family_1,family_2
-// 2025-06-12,Spanish,spanish_audio.wav,22050,"¡Hola! ¿Cómo estás?","Hello! How are you?",Indo-European,Romance,Ibero-Romance
