@@ -8,16 +8,15 @@ nav_exclude: true
 
 <iframe id="LangrFrame" 
         src="/my_assets/html/Langr.html" 
-        style="width: 100%; border: none;"
-        onload="resizeIframe(this)"></iframe>
+        style="width: 100%; border: none;"></iframe>
 
 <script>
-  function resizeIframe(iframe) {
-    // Ensure that the content is available and measurable.
-    if (iframe.contentDocument && iframe.contentDocument.documentElement) {
-      iframe.style.height = iframe.contentDocument.documentElement.scrollHeight + 'px';
+  window.addEventListener('message', (e) => {
+    if (e.data?.type === 'resize') {
+      document.getElementById('LangrFrame').style.height =
+        e.data.height + 'px';
     }
-  }
+  });
 </script>
 
 ## Implementation
@@ -31,3 +30,6 @@ Implemented in vanilla JavaScript.
 [![Last Commit](https://img.shields.io/github/last-commit/RaymondTana/Langr)](https://github.com/RaymondTana/Langr) [![GitHub Stars](https://img.shields.io/github/stars/RaymondTana/Langr?style=social)](https://github.com/RaymondTana/Langr)
 
 [👉 View the full repository on GitHub](https://github.com/RaymondTana/Langr)
+
+<iframe src="/my_assets/html/Langr.html"
+        style="width:100%;height:800px;border:none;"></iframe>
