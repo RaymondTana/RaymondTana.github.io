@@ -61,15 +61,5 @@
     </div>
 
     <script src="/my_assets/js/Langr.js"></script>
-
-    <!-- included this for resizing the iframe on the site -->
-    <script>
-        function sendHeight () {
-            const height = document.documentElement.scrollHeight;
-            parent.postMessage({type:'resize', height}, '*');
-        }
-        window.addEventListener('load', sendHeight);
-        new ResizeObserver(sendHeight).observe(document.documentElement);
-    </script>
 </body>
 </html>
