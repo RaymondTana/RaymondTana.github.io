@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Langr - Language Guessing Game</title>
+    <link rel="stylesheet" href="/my_assets/css/Langr.css">
+</head>
+<body>
+    <button class="instructions-btn" onclick="showInstructions()">Instructions</button>
+    
+    <div class="game-container">
+        <h1 class="game-title">Langr</h1>
+        
+        <div class="guess-section">
+            <div class="guess-counter">Guess: <span id="guessCount">1</span></div>
+            <select class="language-select" id="languageSelect">
+                <option value="">Select a language...</option>
+            </select>
+            <button class="guess-btn" id="guessBtn">Guess!</button>
+            <div id="incorrectMessage" class="incorrect-guess" style="display: none;"></div>
+        </div>
+
+        <div class="clues-section" id="cluesSection">
+            <!-- Clues will be populated here -->
+        </div>
+    </div>
+
+    <!-- Instructions Modal -->
+    <div class="modal-overlay" id="instructionsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">How to Play Langr</h2>
+                <button class="close-btn" onclick="hideInstructions()">&times;</button>
+            </div>
+            <div class="instructions-content">
+                <p>Welcome to <strong>Langr</strong> - the daily language guessing game!</p>
+                
+                <h3>Objective</h3>
+                <p>Guess the mystery language using the clues provided. Each day features a new language with authentic audio and text samples.</p>
+                
+                <h3>How It Works</h3>
+                <ul>
+                    <li>You'll receive clues one-by-one to help identify the language.</li>
+                    <li>Make your guess using the dropdown menu.</li>
+                    <li>If incorrect, you'll get the next clue.</li>
+                    <li>Keep guessing until you find the right answer!</li>
+                </ul>
+                
+                <h3>Clue Order</h3>
+                <ol>
+                    <li><strong>🔊 Audio Sample</strong> - Listen to a native speake.</li>
+                    <li><strong>🔤 English Translation</strong> - Understand what was said.</li>
+                    <li><strong>🌳 Language Family</strong> - Learn about linguistic relationships.</li>
+                    <li><strong>📝 Original Text</strong> - See the text in its original script.</li>
+                </ol>
+                
+                <p><strong>Good luck and have fun learning about languages from around the world! 🌍</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/my_assets/js/Langr.js"></script>
+</body>
+</html>

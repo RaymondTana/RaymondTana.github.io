@@ -6,6 +6,7 @@ title: "Projects"
 Welcome to my Projects page. Here you'll find a collection of coding projects I've worked on.
 
 ## Web Development
+- [Langr Language Guessing Game with JS](pages/Langr.html)
 - [Fractals with Shaders in GLSL](pages/Fractals_with_Shaders.html)
 - [Arxivr with PHP and PostgreSQL](pages/Arxivr)
 - [Lights Out Game with JS](pages/Lights_Out.html)

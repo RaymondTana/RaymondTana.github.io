@@ -4,8 +4,6 @@ title: "Algorithmic Information Theory Primer"
 nav_exclude: true
 ---
 
-# Algorithmic Information Theory
-
 ## Other Resources
 
 - [Tana 2024](/my_assets/documents/PSU%20Math%20Club%20Mini-Talk%20Handout.pdf): My presentation to the Math Club last year on Compression (much of that information is already in this document)
