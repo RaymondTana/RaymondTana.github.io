@@ -65,7 +65,8 @@ async function loadGameData() {
             todaysLanguage: todaysRow
         };
         
-        console.log('Game data loaded successfully:', gameData);
+        // console.log('Game data loaded successfully:', gameData);
+        console.log('Game data loaded successfully');
         
     } catch (error) {
         console.error('Error loading CSV data:', error);
@@ -252,8 +253,7 @@ function createAudioClue() {
             </button>
 
             <div class="audio-info">
-                <div>Audio sample</div>
-                <div>Sample rate: ${gameData.todaysLanguage.sampling_rate} Hz</div>
+                <div>Audio sample of the language</div>
             </div>
         </div>
     `;
