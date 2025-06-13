@@ -241,7 +241,7 @@ function createAudioClue() {
 
     // Get audio file
     const audioId = "audio-clue-" + today; 
-    const srcPath = `assets/audio/${gameData.todaysLanguage.wave}`;
+    const srcPath = `../audio/Langr/${gameData.todaysLanguage.wave}`;
 
     return `
         <div class="audio-player">
