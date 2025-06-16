@@ -31,3 +31,5 @@ On this site I've highlighted some of my favorite coding projects. Read more abo
 </div>
 
 <script src="{{ '/my_assets/js/logo.js' | relative_url }}"></script>
+
+(This is an *epicycle* drawing)
