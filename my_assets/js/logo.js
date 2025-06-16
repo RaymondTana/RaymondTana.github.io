@@ -4,21 +4,27 @@
  * The circles' radii and phases are decided using the discrete Fourier transform
 ***/
 
+// Set internal resolution
+  const INTERNAL_WIDTH = 600;
+  const INTERNAL_HEIGHT = 300;
+
+  canvas.width = INTERNAL_WIDTH;
+  canvas.height = INTERNAL_HEIGHT;
 
 /* =====================================================
-   0. tiny vec2 helper
+   tiny vec2 helper
    ===================================================== */
    class Vec2 {
     constructor(x = 0, y = 0) { this.x = x; this.y = y; }
-    add(v)            { this.x += v.x; this.y += v.y; return this; }
-    clone()           { return new Vec2(this.x, this.y); }
-    mag()             { return Math.hypot(this.x, this.y); }
-    static zero()     { return new Vec2(0, 0); }
+    add(v) { this.x += v.x; this.y += v.y; return this; }
+    clone() { return new Vec2(this.x, this.y); }
+    mag() { return Math.hypot(this.x, this.y); }
+    static zero() { return new Vec2(0, 0); }
   }
   
   /* =====================================================
-     1. Times‑style outlines for “R” & “T”
-        (exported from Times New Roman, simplified)
+      Times‑style outlines for “R” & “T”
+      (exported from Times New Roman, simplified)
      ===================================================== */
 //   const svgPath_R = `
 //   M83.6 0 L0 0 L0 1000 L230 1000
@@ -39,7 +45,7 @@ M35.3994,84.2065l-57.25,225s25,0,25,0c5.7188-20.3438,9.7812-34.7344,12.1562-43.1
 `;
   
   /* =====================================================
-     2. helper → centred sampler for ANY svg path
+     helper: centred sampler for ANY svg path
      ===================================================== */
     function samplerFromPath(dString, scale = 1, flipY = true, dir = 1) {
         const svgNS = 'http://www.w3.org/2000/svg';
@@ -101,7 +107,7 @@ M35.3994,84.2065l-57.25,225s25,0,25,0c5.7188-20.3438,9.7812-34.7344,12.1562-43.1
     }
 
   /* =====================================================
-     3. Fourier helpers
+     Fourier helpers
      ===================================================== */
      const HARMONICS = 150;                // ±HARMONICS terms
      const SAMPLES   = 400;               // integration samples
@@ -136,7 +142,7 @@ M35.3994,84.2065l-57.25,225s25,0,25,0c5.7188-20.3438,9.7812-34.7344,12.1562-43.1
      }   
   
   /* =====================================================
-     4. build samplers & coeffs for R and T
+     build samplers & coeffs for R and T
      ===================================================== */
 function samplerFixedCenter(dString, cx, cy, scale = 1, flipY = true, dir = 1){
     const svgNS = 'http://www.w3.org/2000/svg';
@@ -179,7 +185,7 @@ function samplerFixedCenter(dString, cx, cy, scale = 1, flipY = true, dir = 1){
   const {R : RT, Phi:PhiT} = radiiPhi(fourierCoeffs(pathT));
   
   /* =====================================================
-     5. canvas setup
+     canvas setup
      ===================================================== */
   const canvas = document.getElementById('logoRT');
   const ctx    = canvas.getContext('2d');
@@ -191,7 +197,7 @@ function samplerFixedCenter(dString, cx, cy, scale = 1, flipY = true, dir = 1){
   const CANVAS_SCALE   = 0.35;           // overall shrink to fit nicely
   
   /* =====================================================
-     6. per‑letter drawing
+     per‑letter drawing
      ===================================================== */
   function drawLetter(R, Phi, xShift, t, trail, colorCircles) {
     const vecs = [];
@@ -232,7 +238,7 @@ function samplerFixedCenter(dString, cx, cy, scale = 1, flipY = true, dir = 1){
   }
   
   /* =====================================================
-     7. main animation loop
+     main animation loop
      ===================================================== */
   const TRAIL_MAX = 2000;
   const trailsRouter = [], trailsRinner = [], trailsT = [];
