@@ -26,8 +26,10 @@ Learn about my math on the [Math](math/index.html) page.
 
 On this site I've highlighted some of my favorite coding projects. Read more about them in the [Projects](projects/index.html) page.
 
-<div style="text-align : center; margin : 1rem 0; width : 100%; height : 800px; border : none;" >
-  <canvas id="logoRT" width="600" height="300"></canvas>
+<div style="text-align:center; margin:1rem 0;">
+  <canvas id="logoRT" width="600" height="300"
+        style="transform: scale(2); transform-origin: top left; image-rendering: pixelated;">
+</canvas>
 </div>
 
 <script src="{{ '/my_assets/js/logo.js' | relative_url }}"></script>
