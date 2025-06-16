@@ -4,12 +4,6 @@
  * The circles' radii and phases are decided using the discrete Fourier transform
 ***/
 
-// Set internal resolution
-const INTERNAL_WIDTH = 300;
-const INTERNAL_HEIGHT = 150;
-canvas.width = INTERNAL_WIDTH;
-canvas.height = INTERNAL_HEIGHT;
-
 /* =====================================================
   tiny vec2 helper
 ===================================================== */
