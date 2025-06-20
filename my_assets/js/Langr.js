@@ -9,6 +9,8 @@ let guessCount = 1;
 let gameEnded = false;
 let previousGuesses = [];
 
+document.getElementById('guessBtn').disabled = true;
+
 // Initialize game
 async function initGame() {
     try {
@@ -268,7 +270,7 @@ function createAudioClue() {
 
     // Get audio file
     const audioId = "audio-clue-" + today; 
-    const srcPath = `../audio/Langr/${gameData.todaysLanguage.wave}`;
+    const srcPath = `assets/audio/${gameData.todaysLanguage.wave}`;
 
     return `
         <div class="audio-player">
@@ -364,7 +366,7 @@ function showCelebration() {
             <p style="font-size: 18px; margin-bottom: 10px;">You guessed it correctly!</p>
             <p style="font-size: 24px; font-weight: 600; color: #3498db;">The language was ${gameData.todaysLanguage.language}!</p>
             <p style="margin-top: 20px; color: #666;">You solved it in <strong>${guessCount} guess${guessCount == 1? '' : 'es'}</strong>!</p>
-            <p style="margin-top: 20px; color: #666;">Your previous guess${guessCount == 2? '' : 'es'}:<br>${previousGuesses.join(' → ')}</p>
+            <p style="margin-top: 20px; color: #666;">Your previous guess${previousGuesses.length == 1? '' : 'es'}:<br>${previousGuesses.join(' → ')}</p>
             <button onclick="location.reload()" style="margin-top: 20px; padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 500;">Play Again</button>
             <div class="share-section">
                 <div class="share-title">Share your victory!</div>
@@ -411,7 +413,7 @@ function showSadCelebration() {
             <h2 style="color: #2c3e50; margin-bottom: 20px;">😭 Better luck tomorrow 😭</h2>
             <p style="font-size: 18px; margin-bottom: 10px;">You&#39;ll get &#39;em next time!</p>
             <p style="font-size: 24px; font-weight: 600; color: #3498db;">The language was ${gameData.todaysLanguage.language}.</p>
-            <p style="margin-top: 20px; color: #666;">Your previous guess${guessCount == 2? '' : 'es'}:<br>${previousGuesses.join(' → ')}</p>
+            <p style="margin-top: 20px; color: #666;">Your previous guess${previousGuesses.length == 1? '' : 'es'}:<br>${previousGuesses.length > 0 ? previousGuesses.join(' → ') : 'none'}</p>
             <button onclick="location.reload()" style="margin-top: 20px; padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 500;">Play Again</button>
             <div class="share-section">
                 <div class="share-title">Share your victory!</div>
