@@ -67,9 +67,6 @@ async function loadGameData() {
             languages: ['Abkhaz', 'Afrikaans', 'Albanian', 'Amharic', 'Arabic', 'Armenian', 'Assamese', 'Asturian', 'Azerbaijani', 'Basaa', 'Bashkir', 'Basque', 'Belarusian', 'Bengali', 'Breton', 'Bulgarian', 'Cantonese', 'Catalan', 'Central Kurdish', 'Chuvash', 'Czech', 'Danish', 'Dhivehi', 'Dioula', 'Dutch', 'English', 'Erzya', 'Esperanto', 'Estonian', 'Finnish', 'French', 'Frisian', 'Galician', 'Georgian', 'German', 'Greek', 'Guarani', 'Hakha Chin', 'Hausa', 'Hebrew', 'Hill Mari', 'Hindi', 'Hungarian', 'Icelandic', 'Igbo', 'Indonesian', 'Interlingua', 'Irish', 'Italian', 'Japanese', 'Kabyle', 'Kazakh', 'Kinyarwanda', 'Korean', 'Kurmanji Kurdish', 'Kyrgyz', 'Lao', 'Latvian', 'Lithuanian', 'Luganda', 'Macedonian', 'Malayalam', 'Maltese', 'Mandarin', 'Marathi', 'Meadow Mari', 'Moksha', 'Mongolian', 'Nepali', 'Norwegian Nynorsk', 'Occitan', 'Odia', 'Pashto', 'Persian', 'Polish', 'Portuguese', 'Punjabi', 'Quechua Chanka', 'Romanian', 'Romansh Sursilvan', 'Romansh Vallader', 'Russian', 'Sakha', 'Santali', 'Saraiki', 'Sardinian', 'Serbian', 'Slovak', 'Slovenian', 'Sorbian', 'Upper', 'Spanish', 'Swahili', 'Swedish', 'Taiwanese', 'Tamazight', 'Tamil', 'Tatar', 'Thai', 'Tigre', 'Tigrinya', 'Toki Pona', 'Turkish', 'Turkmen', 'Twi', 'Ukrainian', 'Urdu', 'Uyghur', 'Uzbek', 'Vietnamese', 'Votic', 'Welsh', 'Yoruba'],
             todaysLanguage: todaysRow
         };
-        
-        console.log('Game data loaded successfully:', gameData);
-        
     } catch (error) {
         console.error('Error loading CSV data:', error);
         throw error;
