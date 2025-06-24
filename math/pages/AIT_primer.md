@@ -11,7 +11,6 @@ nav_exclude: true
 - [Grünwald and Vitányi 2008](https://arxiv.org/pdf/0809.2754): great introduction, slightly more technical
 - [Weiss’s notes 2018](https://diagonalargument.com/wp-content/uploads/2018/11/algorithmic-info-theory.pdf): more technical
 - [Tana 2023](https://sifter.ghost.io/halting_problem/): my introduction to the Halting Problem
-- [Tana 2024](https://www.notion.so/Compression-and-GenAI-d194a60d26ec47d195709593da13513f?pvs=21): my project with compression algorithms and generative algorithms
 
 # Basic Introduction to Compression
 
