@@ -1,12 +1,12 @@
 ---
 layout: single
-title: "Hi, I'm Raymond Tana"
+title: "Hi, I'm Raymond Tana, PhD"
 sidebar:
   disable: true
 author_profile: true
 ---
 
-Welcome to my personal site. I am a mathematician, programmer, and explorer.
+Welcome to my personal site. I am a mathematician, programmer, and explorer. I love to learn, ask questions, and build things.
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/raymond-tana-0840121a7/)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)](https://github.com/RaymondTana)

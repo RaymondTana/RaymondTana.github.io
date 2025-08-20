@@ -12,9 +12,15 @@ My area of research touched several mathematical theories: Mathematical Logic, C
 
 [**AIT Primer Page**](/math/pages/AIT_primer.html)
 
+## Dissertation 
+
+This dissertation was submitted in June 2025 in completion of my doctorate in mathematics. I graduated Summer 2025.
+
+[**View the PDF**](/my_assets/documents/Raymond%20Tana%20PhD%20Dissertation.pdf)
+
 ## Dissertation Defense
 
-I defended my dissertation on June 05, 2025. The defense was held at 10AM in 114 McAllister Building, University Park, PA 16802, with both in-person and remote attendance. Included below are my slides as well as a recording of my defense.
+I defended my dissertation on June 05, 2025. The defense was held at 10AM in 114 McAllister Building with both in-person and remote attendance. Included below are my slides as well as a recording of my defense.
 
 [**View the PDF**](/my_assets/documents/Dissertation_Presentation_Raymond_Tana.pdf)
 

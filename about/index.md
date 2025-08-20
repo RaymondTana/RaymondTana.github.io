@@ -3,14 +3,14 @@ layout: single
 title: "About Me"
 ---
 
-I am a mathematician, programmer, and runner. I completed my PhD at Penn State University in mathematics, with a focus in logic and theoretical computer science.  
+I am a mathematician, programmer, and runner. I hold a PhD in Mathematics from Penn State University, with a focus in Logic and Theoretical Computer Science.  
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/raymond-tana-0840121a7/)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)](https://github.com/RaymondTana)
 [![Blog](https://img.shields.io/badge/Sifter_Blog-black?logo=ghost&logoColor=white)](https://sifter.ghost.io/)
 
 ## Personal Information
-- My co-advisors at Penn State are [Dr. Linda Westrick](http://www.personal.psu.edu/lzw299/) and [Dr. Jan Reimann](https://science.psu.edu/math/people/jsr25).
+- My official advisor at Penn State was [Dr. Jan Reimann](https://science.psu.edu/math/people/jsr25), and I was initially advised by [Dr. Linda Westrick](http://www.personal.psu.edu/lzw299/).
 - My [LinkedIn profile](https://www.linkedin.com/in/raymond-tana-0840121a7/).
 - My technical blog, [Sifter](https://sifter.ghost.io/). 
 - My [GitHub profile](https://github.com/RaymondTana).

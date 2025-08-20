@@ -4,7 +4,7 @@ title: "Lights Out"
 nav_exclude: true
 ---
 
-[Lights Out](https://mathworld.wolfram.com/LightsOutPuzzle.html) is a mathematical puzzle that lives on an $n \times n$ where each cell of the grid is one of two colors: either *red* or *white*. The goal is to eventually get all the cells in the grid to be red. You can play the game below:
+[Lights Out](https://mathworld.wolfram.com/LightsOutPuzzle.html) is a mathematical puzzle that lives on an $n \times n$ grid where each cell of the grid is one of two colors: either *red* or *white*. The goal is to eventually get all the cells in the grid to be red. You can play the game below:
 
 <iframe id="lightsOutFrame" 
         src="/my_assets/html/Lights_Out.html" 
