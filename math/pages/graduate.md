@@ -14,7 +14,7 @@ My area of research touched several mathematical theories: Mathematical Logic, C
 
 ## Dissertation 
 
-This dissertation was submitted in June 2025 in completion of my doctorate in mathematics. I graduated Summer 2025.
+This dissertation was submitted in June 2025 in completion of my doctorate in mathematics. I graduated Summer 2025. You can find my dissertation at [this page](https://etda.libraries.psu.edu/catalog/19812rjf5371), or read it below.
 
 [**View the PDF**](/my_assets/documents/Raymond%20Tana%20PhD%20Dissertation.pdf)
 

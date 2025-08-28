@@ -6,7 +6,7 @@ sidebar:
 author_profile: true
 ---
 
-Welcome to my personal site. I am a mathematician, programmer, and explorer. I love to learn, ask questions, and build things.
+Welcome to my personal site. I am a mathematician, researcher, and developer. I love to learn, ask questions, and build things.
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/raymond-tana-0840121a7/)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)](https://github.com/RaymondTana)
@@ -24,7 +24,7 @@ Learn about my teaching on the [Teaching](teaching/index.html) page.
 
 Learn about my math on the [Math](math/index.html) page.
 
-On this site I've highlighted some of my favorite coding projects. Read more about them in the [Projects](projects/index.html) page.
+Find some of my favorite coding projects on the [Projects](projects/index.html) page.
 
 <div style="text-align:center; margin:1rem 0;">
   <canvas id="logoRT" width="600" height="300"></canvas>

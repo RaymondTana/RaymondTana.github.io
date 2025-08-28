@@ -3,19 +3,19 @@ layout: single
 title: "About Me"
 ---
 
-I am a mathematician, programmer, and runner. I hold a PhD in Mathematics from Penn State University, with a focus in Logic and Theoretical Computer Science.  
+I am a mathematician, researcher, and developer. I hold a PhD in Mathematics from Penn State University, with a focus in Logic and Theoretical Computer Science. 
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/raymond-tana-0840121a7/)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)](https://github.com/RaymondTana)
 [![Blog](https://img.shields.io/badge/Sifter_Blog-black?logo=ghost&logoColor=white)](https://sifter.ghost.io/)
 
 ## Personal Information
-- My official advisor at Penn State was [Dr. Jan Reimann](https://science.psu.edu/math/people/jsr25), and I was initially advised by [Dr. Linda Westrick](http://www.personal.psu.edu/lzw299/).
 - My [LinkedIn profile](https://www.linkedin.com/in/raymond-tana-0840121a7/).
 - My technical blog, [Sifter](https://sifter.ghost.io/). 
 - My [GitHub profile](https://github.com/RaymondTana).
 - My [teaching webpage](https://sites.psu.edu/raymondfriendteaching/). 
-- Always working on my second and third languages: Español and Português! 
+- My academic advisors at Penn State were [Dr. Jan Reimann](https://science.psu.edu/math/people/jsr25) and [Dr. Linda Westrick](http://www.personal.psu.edu/lzw299/).
+- I am always working on my second and third languages: Español and Português! 
 - You may know me by my old name: Raymond Friend. My last name has changed to Tana.
 
 ## Roles
@@ -26,8 +26,8 @@ I am a mathematician, programmer, and runner. I hold a PhD in Mathematics from P
 - I am a co-founding member of the Penn State Quantum Information and Computation Club.
 
 ## Projects
-- My main thread of mathematical research has focused applying algorithmic information theory to geometric measure theory. This involves tools from logic, computability theory, and effective descriptive set theory. 
-- I have worked with Dr. Jan Reimann and other graduate students in creating a new, open-source suite of projects to make math education at Penn State more accessible and affordable using HTML, Jupyter, and Python. Here is an example of our new [MATH 110: Techniques of Calculus textbook](https://28left.github.io/110jupyter/intro.html) deployed Fall 2021.
+- My main thread of mathematical research has focused on applying algorithmic information theory to geometric measure theory. This involves tools from logic, computability theory, and effective descriptive set theory. 
+- I have worked with [Dr. Jan Reimann](https://science.psu.edu/math/people/jsr25) and other graduate students in creating a new, open-source suite of projects to make math education at Penn State more accessible and affordable using HTML, Jupyter, and Python. Here is an example of our new [MATH 110: Techniques of Calculus textbook](https://28left.github.io/110jupyter/intro.html) deployed Fall 2021.
 - I produced the first ever [Eberly College of Science Greenhouse Gas Inventory](https://pennstateoffice365.sharepoint.com/sites/PennStateEberlyCollegeofScienceSustainabilityCouncil/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPennStateEberlyCollegeofScienceSustainabilityCouncil%2FShared%20Documents%2FGeneral%2F2021%20ECoS%20GHG%20Emissions%20Inventory%2FECoS%5FGHG%5FInventory%5FCY2019%5FReport%2Epdf&parent=%2Fsites%2FPennStateEberlyCollegeofScienceSustainabilityCouncil%2FShared%20Documents%2FGeneral%2F2021%20ECoS%20GHG%20Emissions%20Inventory&p=true&ga=1), quantifying the annual emissions related to all of Penn State's Eberly College of Science activities and operations. This was the most ambitious inventory effort performed at Penn State, and has served as a template for various other colleges and units at the university to produce their own inventories. My inventory further recommends methods for decarbonization, offset, and strategic planning to counteract our current emissions. I personally have helped produced unit-level inventories for the University Libraries and the College of Health and Human Development. Eberly College's Science Journal 2022 Issue 2 featured an [exposition](https://science.psu.edu/science-journal/2022-issue-2/graduate-student-connects-math-with-green-advocacy?fbclid=IwAR2Jc585LSxNee-2zQ69X0lt_gJJwKT_w3hDyDTWe2D_tR7b3hPta-9HKuo) on this project. 
 - I also produced the first ever [Council of Commonwealth Student Governments Lifetime Greenhouse Gas Inventory](https://github.com/RaymondFriend/CCSG_Inventory), quantifying all greenhouse gas emissions produced through all operations committed by Penn State's CCSG (the student government for all commonwealth campuses) in its 60+ year history. This inventory effort was the first performed for any organization at Penn State, and has inspired other student governments to produce their own as well.
 - My team and I submitted our final project on [AP Outcomes and University metrics](https://github.com/mcelhens/AP-Outcomes-to-University-Metrics) in completion of the [Erdős Institute](https://www.erdosinstitute.org/) Data Science Bootcamp in December 2024. Check out the [Streamlit app](https://ap-outcomes.streamlit.app/) I created for it!
