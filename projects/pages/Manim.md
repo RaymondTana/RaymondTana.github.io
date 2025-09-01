@@ -16,11 +16,22 @@ I store all of my Manim work in the below repository. All the code used for anim
 
 [👉 View the full repository on GitHub](https://github.com/RaymondTana/manim_videos)
 
+## Dimension is Not (Just) a Global Property!
+
+<iframe width="560" height="315" 
+    src="https://www.youtube.com/embed/Xo9yF5MV5JQ?si=kW_ol0G8HmNCDmzW" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen>
+</iframe>
+
 ## Manim Video Teaser
 
 <iframe width="560" height="315" 
     src="https://www.youtube.com/embed/hg7bFiNvHS0?si=qwPpczpLm0vNYWDL" 
-    title="YouTube video player" frameborder="0" 
+    title="YouTube video player" 
+    frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
     allowfullscreen>
 </iframe>
