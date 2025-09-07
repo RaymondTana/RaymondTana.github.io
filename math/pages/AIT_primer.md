@@ -6,13 +6,22 @@ nav_exclude: true
 
 ## Other Resources
 
-- [Tana 2024](/my_assets/documents/PSU%20Math%20Club%20Mini-Talk%20Handout.pdf): My presentation to the Math Club last year on Compression (much of that information is already in this document)
+- [Lutz & Lutz 2018](https://dl.acm.org/doi/10.1145/3201783): original Point-to-Set Principle statement
+- [Hitchcock 2005](https://www.notion.so/Math-Organizer-15560f2d03f9464898cc5ceb86b748b8?pvs=21): original Correspondence Principle statement
+- Tana 2024: My presentation to the Penn State Math Club on compression
+    
+    [PSU Math Club Mini-Talk Handout.pdf](Algorithmic%20Information%20Theory%2014596babc1b2806e8eb6ef9a6533424d/PSU_Math_Club_Mini-Talk_Handout.pdf)
+    
 - [Hutter 2007](https://arxiv.org/pdf/cs/0703024): short, non-technical yet philosophical introduction
 - [Grünwald and Vitányi 2008](https://arxiv.org/pdf/0809.2754): great introduction, slightly more technical
 - [Weiss’s notes 2018](https://diagonalargument.com/wp-content/uploads/2018/11/algorithmic-info-theory.pdf): more technical
 - [Tana 2023](https://sifter.ghost.io/halting_problem/): my introduction to the Halting Problem
 
 # Basic Introduction to Compression
+
+This document is the precursor to my newer video on this topic as well. 
+
+[https://www.youtube.com/embed/Xo9yF5MV5JQ?si=NVpo119cTg1p58KP](https://www.youtube.com/embed/Xo9yF5MV5JQ?si=NVpo119cTg1p58KP)
 
 ## Definition
 
@@ -54,13 +63,13 @@ I like thinking of it this way, because, really, each theory in mathematics is s
 
 ### Example 1 [all zeros]:
 
-> Imagine you have a text file full of $2^{10}$ zeros. You throw this text file into a compressor. What’s the best this compressor could really do to minimize the size of this file? 
+Imagine you have a text file full of $2^{10}$ zeros. You throw this text file into a compressor. What’s the best this compressor could really do to minimize the size of this file? 
 
 *Answer*: we might store a description of the file like the instructions: “`print '0' 2^10 times`”. This representation is *much* shorter (check its length is $\log_{2} (2^{10}) + O(1)$).  Of course, this scheme works for any run of zeros of some different length. We notice that this description is basically the best we could ask to do, and because its length runs like $\log$, this is basically like having *no* information in this file. What good does knowing that many zeros offer? 
 
 ### Example 2 [coin flips]:
 
-> Imagine you have a text file full of the results of flipping a fair, $2$-sided coin $2^{10}$ times: storing zero for heads, one for tails. You throw this text file into a compressor. What’s the best this compressor could really do to minimize the size of this file? 
+Imagine you have a text file full of the results of flipping a fair, $2$-sided coin $2^{10}$ times: storing zero for heads, one for tails. You throw this text file into a compressor. What’s the best this compressor could really do to minimize the size of this file? 
 
 *Answer*: Because none of the bits are related to one another, we should not expect there to be any redundancy to take advantage of when looking for a shorter representation for this file. A file like this is filled with the outcome of a random event, so we shouldn’t find that it is very compressible. In fact, this is the “worst case” scenario, because we need basically all of the bits in this original file in order to reconstruct it. Unlike the file filled with zeros, it seems that these bits are *information-ful*, i.e., this file contains basically the most amount of information possible to contain across $2^{10}$ bits.
 
@@ -124,11 +133,15 @@ $$
 
 Here comes the surprising connection: that effective Hausdorff dimension can approximate (classical) Hausdorff dimension! Take a simple (more precisely, $\Sigma^0_2$-definable, from the arithmetical hierarchy) set $X$ in Euclidean space, like a rational interval, the Cantor middle-$1/3$ set, any simple geometric set with rational side lengths and position, etc. 
 
-Then we have the (easy version of the) Point-to-Set Principle:
+It turns out that this effective dimension is related to classical fractal dimension. We have the (easy version of the) Point-to-Set Principle called the *Correspondence Principle*:
+
+**Theorem [Correspondence Principle]**
 
 $$
-\dim_{\operatorname{H}}(X) = \sup_{x \in X} \liminf_{n \to \infty} \frac{K(0.x_0 x_1 \cdots x_{n - 1})}{n}
+\dim_{\operatorname{H}}(X) = \sup_{x \in X} \liminf_{n \to \infty} \frac{K(0.x_0 x_1 \cdots x_{n - 1})}{n}.
 $$
+
+**Source**: Hitchcock, J. Correspondence Principles for Effective Dimensions. *Theory Comput Syst* **38**, 559–571 (2005). [https://doi.org/10.1007/s00224-004-1122-1](https://doi.org/10.1007/s00224-004-1122-1) 
 
 This should be read as: we can compute the (fractal) dimension (like Hausdorff and packing dimensions) in a point-wise manner: we ask across all the points in $X$ just how complex the first few bits of that point are as a string, and then keep extending the prefixes longer and longer (length $n$) and computing their information content (i.e., how incompressible they are) relative to the maximum size $n$. 
 
@@ -168,23 +181,25 @@ Each paradigm offers plenty of variants that play with the meanings of *effectiv
 
 More notably, though, is that many of the known notions of randomness admit equivalent formulations in all three paradigms.
 
-One desirable property for any randomness notion is that **almost every sequence qualify as random**, for to be random should be a typical trait measure-theoretically. Just as fractal dimension acts as a refinement to measure by differentiating between sets of measure zero, we would expect there to be **a refinement of any randomness notion to the few sequences which do not qualify as random**; some way to quantify *how random* the sequence behaves. This role will be filled by (the various notions of) **effective fractal dimension**, whose development also spans all three paradigms of algorithmic randomness. The name for effective fractal dimension may as well have been something like *asymptotic (algorithmic) information density* had it not been for the fact that this notion is often equivalently viewed as an **effectivization of classical fractal dimension constructions**, and as a classical local dimension notion itself. This is our first hint of the possibility of contributing to classical mathematics by algorithmic arguments; and this hope has only been bolstered after the **discovery of the Point to Set Principle**, a result which numerically relates the effective fractal dimension of points in a set to the classical fractal dimension of the entire set. 
+One desirable property for any randomness notion is that **almost every sequence qualify as random**, for to be random should be a typical trait measure-theoretically. Just as fractal dimension acts as a refinement to measure by differentiating between sets of measure zero, we would expect there to be **a refinement of any randomness notion to the few sequences which do not qualify as random**; some way to quantify *how random* the sequence behaves. This role will be filled by (the various notions of) **effective fractal dimension**, whose development also spans all three paradigms of algorithmic randomness. The name for effective fractal dimension may as well have been something like *asymptotic (algorithmic) information density* had it not been for the fact that this notion is often equivalently viewed as an **effectivization of classical fractal dimension constructions**, and as a classical local dimension notion itself. This is our first hint of the possibility of contributing to classical mathematics by algorithmic arguments; and this hope has only been bolstered after the **discovery of the Point-to-Set Principle**, a result which numerically relates the effective fractal dimension of points in a set to the classical fractal dimension of the entire set. 
 
 **Theorem [Point-to-Set Principle]** For any $X \subseteq \mathbb{R}^N$,
 
 $$
-\dim_H(X) = \min_{A\in 2^\omega} \sup_{x \in X} \operatorname{dim}^A(x) = \min_{A\in 2^\omega} \sup_{x \in X}  \liminf_{n \to \infty} \frac{K^A(x_0 \cdots x_{n - 1})}{n}.
+\dim_{\operatorname{H}}(X) = \min_{A\in 2^\omega} \sup_{x \in X} \operatorname{dim}^A(x) = \min_{A\in 2^\omega} \sup_{x \in X}  \liminf_{n \to \infty} \frac{K^A(x_0 \cdots x_{n - 1})}{n}.
 $$
+
+**Source**: Jack H. Lutz and Neil Lutz. 2018. *Algorithmic Information, Plane Kakeya Sets, and Conditional Dimension*. ACM Trans. Comput. Theory 10, 2, Article 7 (June 2018), 22 pages. [https://doi.org/10.1145/3201783](https://doi.org/10.1145/3201783).
 
 In other words, it characterizes the dimension of a set in a *point-wise manner*, something impossible classically since singletons are always assigned dimension zero. The difference here is that -- *algorithmically -- not all points are made equal*. While some points can be demonstrated to have zero dimension algorithmically, other points in the set might have nonzero effective fractal dimension. Therefore, effective fractal dimension is yet another layer of refinement: distinguishing between individual points.
 
 ---
 
-## Excercises
+## Challenge Problems
 
 1. `Recover basic geometric dimensions effectively`: can you verify that the dimension of basic geometric shapes are as we expect using the Point to Set Principle?
-    1. If $x \in \mathbb{R}$ is a real number, prove that it has zero (Hausdorff) dimension: $\dim_{\text{H}}(\set{x}) = 0$.
-    2. If $z \in \mathbb{R}^N$ is a point in $N$-dimensional Euclidean space, prove it’s zero dimensional: $\dim_{\text{H}}(\set{z}) = 0$. 
+    1. If $x \in \mathbb{R}$ is a real number, prove that it has zero (Hausdorff) dimension: $\dim_{\text{H}}(\{x\}) = 0$.
+    2. If $z \in \mathbb{R}^N$ is a point in $N$-dimensional Euclidean space, prove it’s zero dimensional: $\dim_{\text{H}}(\{z\}) = 0$. 
     3. (harder) Prove $\dim_{\text{H}}(\mathbb{R}) = 1$. 
     4. (similar difficulty to (c)) Prove $\dim_{\text{H}}(\mathbb{R}^N) = N$. 
 2. `Reason about the Hausdorff dimension of fractals effectively`: can you also come up with a way to compute the Hausdorff dimension of basic fractals using the Point to Set Principle?
