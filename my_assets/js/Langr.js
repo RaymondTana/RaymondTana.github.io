@@ -39,7 +39,7 @@ function fallbackRow(rows, today) {
 }
 
 // Load and parse CSV data
-async function loadGameData() {
+async function loadGameData(targetDate = null) {
     try {
         const response = await fetch('../csv/Langr.csv');
         if (!response.ok) {
