@@ -5,6 +5,8 @@ title: "About Me"
 
 I am a mathematician, researcher, and developer. I hold a PhD in Mathematics from Penn State University, with a focus in Logic and Theoretical Computer Science. 
 
+I currently work at [Butter](https://docs.butter.dev/) as a research engineer.
+
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/raymond-tana-0840121a7/)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)](https://github.com/RaymondTana)
 [![Blog](https://img.shields.io/badge/Sifter_Blog-black?logo=ghost&logoColor=white)](https://sifter.ghost.io/)
@@ -16,14 +18,15 @@ I am a mathematician, researcher, and developer. I hold a PhD in Mathematics fro
 - My [teaching webpage](https://sites.psu.edu/raymondfriendteaching/). 
 - My academic advisors at Penn State were [Dr. Jan Reimann](https://science.psu.edu/math/people/jsr25) and [Dr. Linda Westrick](http://www.personal.psu.edu/lzw299/).
 - I am always working on my second and third languages: Español and Português! 
-- You may know me by my old name: Raymond Friend. My last name has changed to Tana.
+- You may know me by my old name: Raymond *Friend*. My last name has changed to *Tana*.
 
 ## Roles
-- I have taught various courses at Penn State, including [MATH 033: Mathematics for Sustainability](https://www.psu.edu/news/eberly-college-science/story/using-sustainability-make-introductory-stem-courses-meaningful/), (I'm quoted in the linked article), MATH 230: Calculus and Vector Analysis, and MATH 486: Mathematical Theory of Games
-- I have served as the Graduate Chair on the [Eberly College of Science Sustainability Council](https://science.psu.edu/about/leadership/sustainability-council) for the last four full academic years.
-- I also served as the leader for the Carbon Neutral Working Group with the Student Sustainability Advisory Council (SSAC) for two academic years. Here is a [presentation of our final recommendations from Fall 2021](https://pennstateoffice365.sharepoint.com/:p:/s/SSAC2021-202257/EV5n9seAeaZHmW0KhekxhToBwIBxW7bnfDPO_naWxsAj_Q?e=cCuToc). I was [interviewed about my sustainability advocacy](https://medium.com/statecollegespark/students-advocate-for-a-greener-campus-7e42883a7c5e) by Ava Klink for SPARK. 
-- I was a member of the [Penn State Logic Group](https://logic.math.psu.edu/) headed by Drs. Jan Reimann and Linda Westrick. We would meet weekly for 1.5 hours in our Logic Seminar to talk about current topics and have an internal or external speaker present. 
-- I am a co-founding member of the Penn State Quantum Information and Computation Club.
+- **Research Engineer**: At Butter, we are building muscle memory for LLM requests using an OpenAI-compatible API proxy which forwards novel requests to inference providers and caches their responses, serving from cache whenever an incoming request has been seen before. I head our R&D. Check out our [blog](https://blog.butter.dev/)!
+- **Software Development**: I have produced applications for the Reliability Engineering team at ASML, as well as built some accessible platforms for the Mathematics Department at Penn State University.
+- **Graduate Teaching Assistant**: I have taught various courses at Penn State, including [MATH 033: Mathematics for Sustainability](https://www.psu.edu/news/eberly-college-science/story/using-sustainability-make-introductory-stem-courses-meaningful/), (I'm quoted in the linked article), MATH 230: Calculus and Vector Analysis, and MATH 486: Mathematical Theory of Games.
+- **Sustainability Chair**: I have served as the Graduate Chair on the [Eberly College of Science Sustainability Council](https://science.psu.edu/about/leadership/sustainability-council) for the last four full academic years.
+- **Sustainability Advocate**: I also served as the leader for the Carbon Neutral Working Group with the Student Sustainability Advisory Council (SSAC) for two academic years. Here is a [presentation of our final recommendations from Fall 2021](https://pennstateoffice365.sharepoint.com/:p:/s/SSAC2021-202257/EV5n9seAeaZHmW0KhekxhToBwIBxW7bnfDPO_naWxsAj_Q?e=cCuToc). I was [interviewed about my sustainability advocacy](https://medium.com/statecollegespark/students-advocate-for-a-greener-campus-7e42883a7c5e) by Ava Klink for SPARK. 
+- **Logic**: I was a member of the [Penn State Logic Group](https://logic.math.psu.edu/) headed by Drs. Jan Reimann and Linda Westrick. We would meet weekly for 1.5 hours in our Logic Seminar to talk about current topics and have an internal or external speaker present.
 
 ## Projects
 - My main thread of mathematical research has focused on applying algorithmic information theory to geometric measure theory. This involves tools from logic, computability theory, and effective descriptive set theory. 
@@ -37,6 +40,7 @@ I am a mathematician, researcher, and developer. I hold a PhD in Mathematics fro
 - I have written a [research report](https://www.linkedin.com/feed/update/urn:li:activity:7088496715963482112/) in Portuguese about Ethnomathematics and the mathematical practices found in indigenous Brazilian practices. 
 
 ## Mathematical and Professional Experiences
+- I currently work at [Butter](https://docs.butter.dev/) as a research engineer. I started in September 2025.
 - I completed the Data Science bootcamp from the [Erdős Institute](https://www.erdosinstitute.org/) during Fall 2024. I TA'd for the same bootcamp the following semester in Spring 2025. 
 - I interned with [ASML](https://www.asml.com/en) for 12 weeks as a Reliability Engineering and Software Development Intern in San Jose, California in Summer 2024. We improved failure rate prediction tools for components of EUV (lithography) machines.
 - I participated in the 12-week [BlueDot Impact AI Safety Fundamentals bootcamp](https://aisafetyfundamentals.com/) in Spring 2024. We covered reinforcement learning, interpretability, governance, and other alignment paradigms.  
@@ -47,7 +51,7 @@ I am a mathematician, researcher, and developer. I hold a PhD in Mathematics fro
 - I participated in the 8-week [Auburn University Mathematics REU](https://cws.auburn.edu/apspi/pm/mathreu) in Summer 2018, where we mostly covered open problems in Graph and Ramsey Theory.
 
 ## Teaching
-- As of October 2023, I now possess my department's [Teaching Associate Status](https://science.psu.edu/math/graduate/teaching-in-math#:~:text=Teaching%20Associate%20Status), which reflects a distinguished completion of my graduate teaching assistant training program and for having shown a record of successful classroom teaching.
+- In October 2023, I received my [Teaching Associate Status](https://science.psu.edu/math/graduate/teaching-in-math#:~:text=Teaching%20Associate%20Status), which reflects a distinguished completion of my graduate teaching assistant training program and for having shown a record of successful classroom teaching.
 - I have taught 7 sections of MATH 033 as the principal instructor; 2 sections of MATH 033 as a co-instructor; 1 section of MATH 230 as the principal instructor; 1 section of MATH 486 as a co-instructor; and 2 sections of MATH 486 as the teaching assistant.
 - My [teaching page](https://raymondtana.github.io/teaching/) highlights my teaching philosophy, the content I've generated for my courses, and other resources. 
 - I received the 2021-2022 Department of Mathematics Teaching Award through the Penn State Math Department (called the Robert and Betsy Wilson Endowed Scholarship).
@@ -68,6 +72,6 @@ I am a mathematician, researcher, and developer. I hold a PhD in Mathematics fro
 - I am a [FLAS](https://www2.ed.gov/programs/iegpsflasf/index.html) Scholar: I participated in a language and cultural exchange (intercâmbio) through [CET](https://cetacademicprograms.com/about/) in São Paulo, Brazil in the Summer of 2023 to learn about Brazil and Brazilian Portuguese. Adorei meu tempo lá! [Here](https://sgllc.la.psu.edu/student-profiles/raymond-tana/) is a reflection on my experience.
 - I love to travel. I have traveled through the Americas, Europe, and a bit of Asia so far :)
 - I often run, bike, swim, and rock climb.
-- I love to code; especially mathy games and visualizations. You can see some of my creations on my [Khan Academy profile](https://www.khanacademy.org/profile/kaid_952911577858513019620187/projects), or read about it [in my post here](https://raymondtana.github.io/projects/pages/KA.html).!
+- I love to code; especially mathy games and visualizations. You can see some of my creations on my [Khan Academy profile](https://www.khanacademy.org/profile/kaid_952911577858513019620187/projects), or read about it [in my post here](https://raymondtana.github.io/projects/pages/KA.html)!
 - I am the proud parent of many houseplants.
 - I recently changed my legal name and made a [Youtube video](https://www.youtube.com/watch?v=ZBRAxkyvkqY) detailing general advice for the process and my experience.
