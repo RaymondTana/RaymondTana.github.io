@@ -13,9 +13,8 @@ I currently work at [Butter](https://docs.butter.dev/) as a research engineer.
 
 ## Personal Information
 - My [LinkedIn profile](https://www.linkedin.com/in/raymond-tana-0840121a7/).
-- My technical blog, [Sifter](https://sifter.ghost.io/). 
 - My [GitHub profile](https://github.com/RaymondTana).
-- My [teaching webpage](https://sites.psu.edu/raymondfriendteaching/). 
+- My technical blog, [Sifter](https://sifter.ghost.io/). 
 - My academic advisors at Penn State were [Dr. Jan Reimann](https://science.psu.edu/math/people/jsr25) and [Dr. Linda Westrick](http://www.personal.psu.edu/lzw299/).
 - I am always working on my second and third languages: Español and Português! 
 - You may know me by my old name: Raymond *Friend*. My last name has changed to *Tana*.
@@ -56,10 +55,7 @@ I currently work at [Butter](https://docs.butter.dev/) as a research engineer.
 - My [teaching page](https://raymondtana.github.io/teaching/) highlights my teaching philosophy, the content I've generated for my courses, and other resources. 
 - I received the 2021-2022 Department of Mathematics Teaching Award through the Penn State Math Department (called the Robert and Betsy Wilson Endowed Scholarship).
 - I also received the 2023-2024 Department of Mathematics [Charles H. Hoover Memorial Award](https://arc.net/l/quote/ujzlnxbz) in recognition of outstanding undergraduate teaching by a graduate teaching assistant. 
-
-## Resources for Students
 - Here is the link to a [list of resources available to students](https://bramble-recess-9ca.notion.site/University-Park-Student-Resource-Guide-93bf3aed34984842adbd67415c99eea7?pvs=143) dealing with housing, food, clothing, transportation, funding, or health insecurities. Feel free to distribute. The list was compiled by me and my students from MATH 33 during Fall 2021-2024.
-- I aim to provide a safe space for all students of all races, abilities, sexual & romantic orientations, genders, religions, ages, nationalities, and ideologies. Please reach out to me if you believe I can help you navigate Penn State more safely or equitably. 
 
 ## Volunteering
 - I volunteered for three years teaching ESL in the State College area to native Spanish speakers through the [Mid-State Literacy Council](https://www.mid-stateliteracycouncil.org/). 
