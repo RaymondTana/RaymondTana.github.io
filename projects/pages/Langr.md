@@ -4,7 +4,7 @@ title: "Langr"
 nav_exclude: true
 ---
 
-**Langr** is a a language guessing game. The concept of the game is similar to the Wordle variants, and is unique in its multimodality. Language samples are provided, and the user is meant to use the available evidence to guess the source language from which all that evidence comes. The user receives a better score for using less evidence.
+**Langr** is a language guessing game. The concept of the game is similar to the Wordle variants, and is unique in its multimodality. Language samples are provided, and the user is meant to use the available evidence to guess the source language from which all that evidence comes. The user receives a better score for using less evidence.
 
 You can play the game below:
 
