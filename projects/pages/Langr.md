@@ -14,7 +14,7 @@ You can play the game below:
 
 Implemented in vanilla JavaScript. We make use of many sources of data in order to create this game. 
 
-Spoken samples, sentence text, and other speaker metadata are sourced from `Mozilla CommonVoice`. Language metadata was mainly sourced from `Glottolog`, including a language's family lineage. Phonetic transcriptions are generated using `eSpeak`. And the `langcodes` library helps to translate between each library using standard ISO 639‑3 codes. 
+Spoken samples, sentence text, and other speaker metadata are sourced from `Mozilla Common Voice (v24)`. Language metadata was mainly sourced from `Glottolog`, including a language's family lineage. Phonetic transcriptions are generated using `eSpeak`. And the `langcodes` library helps to translate between each library using standard ISO 639‑3 codes. 
 
 ## GitHub Repository
 
