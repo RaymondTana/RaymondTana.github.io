@@ -6,17 +6,24 @@ custom_css: my_assets/css/custom.css
 
 # Defaults
 defaults:
-  # _posts
+  # _pages
   - scope:
       path: ""
-      type: pages #posts
+      type: pages
     values:
       layout: single
       author_profile: true
-      # read_time: true
-      # comments: # true
-      # share: true
-      # related: true
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      show_date: true
+      share: true
+      related: true
 
 
 # use this when remote

@@ -16,15 +16,11 @@ Welcome to my personal site. I am a mathematician, researcher, and developer. I 
 
 ## About Me
 
-Read about my experiences and interests on the [About Me](about/index.html) page.
-
-You can find my current résumé and CV on the [Résumé and CV](cv/index.html) page.
-
-Learn about my teaching on the [Teaching](teaching/index.html) page.
-
-Learn about my math on the [Math](math/index.html) page.
-
-Find some of my favorite coding projects on the [Projects](projects/index.html) page.
+- Learn all [About Me](about/index.html).
+- Check out my [Blog](blog/index.html).
+- Explore some of my personal [Projects](projects/index.html).
+- View my current [Résumé and CV](cv/index.html).
+- Learn about my [Math](math/index.html) and [Teaching](teaching/index.html).
 
 <div style="text-align:center; margin:1rem 0;">
   <canvas id="logoRT" width="600" height="300"></canvas>
