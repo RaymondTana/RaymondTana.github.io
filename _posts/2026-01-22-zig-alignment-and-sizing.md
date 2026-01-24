@@ -68,7 +68,7 @@ pub fn main() void {
 @alignOf( *u8 ): 8        @sizeOf( *u8 ): 8
 @alignOf( u16 ): 2        @sizeOf( u16 ): 2
 @alignOf( u17 ): 4        @sizeOf( u17 ): 4
-@alignOf( i32 ): 4      @sizeOf( i32 ): 4
+@alignOf( i32 ): 4        @sizeOf( i32 ): 4
 @alignOf( f64 ): 8        @sizeOf( f64 ): 8
 @alignOf( usize ): 8      @sizeOf( usize ): 8
 ```
@@ -80,7 +80,9 @@ $$
 \texttt{@sizeOf(primitive)} = \texttt{@alignOf(primitive)}.
 $$
 
-Most of these make sense. A `c_char` truly requires 8 bits, or 1 byte to specify. Whereas, a bool comprises a single bit (information-theoretically). But, alignment and size are measured in *whole bytes*, so we should round up to the nearest byte (and pad with 7 bits to fill up that byte). 
+Most of these make sense. A `c_char` truly requires 8 bits, or 1 byte to specify. 
+
+Whereas, a `bool` comprises a single bit (information-theoretically). But, alignment and size are measured in *whole bytes*, so we should round up to the nearest byte (and pad with 7 bits to fill up that byte). 
 
 Similarly, any unsigned integer `u{b}`, signed integer `i{b}`, or floating-point number `f{b}` contains $b$ bits of information. So, counting in bytes, we will have to round $b / 8$ up, somehow. But, look at `u17`: despite $2 < 17 / 8 \leq 3$, the size of `u17` is not 3 bytes. Instead, it's 4 bytes. In general, alignment and size must be *powers-of-2* bytes. This is another desirable property half-dictated by architecture and half-related to the convenience of powers of two. So, we actually always *round up to the nearest power-of-2 bytes* when converting from bits. 
 
@@ -100,13 +102,13 @@ $$
 
 That is, the size of the type is always a multiple of its alignment.
 
-Next up, depending on your architecture, `usize` will either match `u32` or `u64`. I'm working on a 64-bit machine, so that's why we see its size and alignment as 8 bytes. Moreover, any pointer (such as `*u8`) represents an address, again of type `usize`. So, the size of the pointer type will match that of `usize`. 
+Next up, depending on your architecture, `usize` will either match `u32` or `u64`. I'm working on a 64-bit machine, so that's why we see its size and alignment as 8 bytes. Moreover, any pointer (such as `*u8`) represents an address, which is guaranteed by Zig to match `usize`. 
 
 For primitive data types, remember: **their size and align values agree and equal the smallest power-of-2 many bytes required to represent that type in memory**.
 
 ### Structs
 
-In Zig, a *struct* combines many fields into a single data type. How does memory layout work when many fields are combined together? 
+In Zig, a `struct` combines many fields into a single data type. How does memory layout work when many fields are combined together? 
 
 > **Note**: Zig automatically minimizes the memory footprint of a struct by possibly shuffling around its fields. To force the Zig compiler to respect the order of the fields as we've defined them, we may use the `extern` keyword as shown below. Really, this forces the compiler to obey C ABI compatibility. 
 
