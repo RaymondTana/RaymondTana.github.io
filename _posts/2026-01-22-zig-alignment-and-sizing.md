@@ -128,8 +128,8 @@ const pair = extern struct {
 we should consider the meanings of align and size again:
 - The alignment of the struct `pair` should be such that any offset by this alignment value does not break the alignment of its constituent fields `a` and `b`. 
   - Here, field `b` has a stricter alignment of 4 bytes, whereas `a` permits offsets of 1 byte. So, `pair` better also only permit alignments of 4 bytes. 
-- The size of the struct `pair` is dictated by its alignment. Its memory will necessarily take up a number of bytes which is a multiple of its alignment. To figure out exactly how many, we iterate through the fields in order, trying our best to greedily pack those fields into "buckets" of size equal to the alignment of the struct.
-  - Here, the size of `a` is just one byte, so it fits into a single bucket of size 4 bytes (the alignment of `pair` is 4 bytes), with three bytes to spare. Now, we consider the next field: `b`. As its alignment is 4 bytes, we can only write `b` at an address which is a multiple of its own alignment. The soonest we can accomplish this is by padding three bytes after `a` and writing `b` at the fourth byte. This already places `b` into another bucket, in which it fits entirely as its size is 4 bytes. So, the total size of `pair` is 8 bytes.
+- The size of the struct `pair` is dictated by its alignment. Its memory will necessarily take up a number of bytes which is a multiple of its alignment. To figure out exactly how many, we iterate through the fields in order, trying our best to greedily pack those fields while still respecting their own alignments. 
+  - Here, the size of `a` is just one byte, so it fits into a single memory chunk of size 4 bytes (the alignment of `pair` is 4 bytes), with three bytes to spare. Now, we consider the next field: `b`. As its alignment is 4 bytes, we can only write `b` at an address which is a multiple of its own alignment. The soonest we can accomplish this is by padding three bytes after `a` and writing `b` at the fourth byte. This already places `b` into another 4-byte memory chunk, in which it fits entirely as its size is 4 bytes. So, the total size of `pair` is 8 bytes.
 
 Now, what do you expect the output of the following Zig code to be?
 ```zig
@@ -518,7 +518,7 @@ monsters size: 160_000 bytes        // Total memory size of 10_000 monsters
 Do our formulas agree? 
 1. **`Monster` Struct**: 
   - The fields of `Monster` satisfy $\texttt{@alignOf(anim)} = 8$ and $\texttt{@alignOf(kind)} = 1$. So, we expect the alignment of the struct to be $\texttt{@alignOf(Monster)} = 8$. 
-  - No matter the ordering, it takes two buckets of size 8 bytes to fit these fields (since $\texttt{@sizeOf(anim)} = 8$ and $\texttt{@sizeOf(kind)} = 1$). So, we expect $\texttt{@sizeOf(Monster)} = 16$, exactly as we observed. 
+  - No matter the ordering, it takes two memory chunks of size 8 bytes to fit these fields (since $\texttt{@sizeOf(anim)} = 8$ and $\texttt{@sizeOf(kind)} = 1$). So, we expect $\texttt{@sizeOf(Monster)} = 16$, exactly as we observed. 
 2. **ArrayList(Monster) Type**: as a type, it takes a bit of overhead to specify `ArrayList(Monster)`, since an ArrayList is really a slice `[]Monster` plus a capacity (`usize`). On my 64-bit machine, that adds up to 24 bytes of memory.
 3. **`monsters` ArrayList**: remember, ArrayLists act like "arrays of structs".
   - The natural size and alignment of the `Monster` struct dictate the layout of the `monsters` ArrayList. 
