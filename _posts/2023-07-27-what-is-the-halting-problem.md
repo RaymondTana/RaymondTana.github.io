@@ -140,7 +140,7 @@ $$
 W := \{s \in \mathbb{N} : \Phi_e(x)[s] \uparrow\}.
 $$
 
-This set $$W$$ is c.e.: simply simulate $$\Phi_e(x)$$ and enumerate every $$s$$ so long as the computation hasn't already halted by the $$s$$-th step. It is possible to extract an index $$j$$ for which $$W = \operatorname{domain}(\Phi_j)$$ as discussed above. We ask whether $$j \in \operatorname{Inf}$$? If so, then $$W$$ is infinite, and thus $$\Phi_e(x) \uparrow$$, so $$\langle e, x \rangle \mathbb{N}ot\in K$$. Otherwise, $$W$$ is finite, and therefore, by some step $$s$$, we know that $$\Phi_e(x)[s] \downarrow$$, hence $$\Phi_e(x) \downarrow$$, so $$\langle e, x \rangle \in K$$. Thus, we may use $$\operatorname{Inf}$$ to decide membership in $$K$$. 
+This set $$W$$ is c.e.: simply simulate $$\Phi_e(x)$$ and enumerate every $$s$$ so long as the computation hasn't already halted by the $$s$$-th step. It is possible to extract an index $$j$$ for which $$W = \operatorname{domain}(\Phi_j)$$ as discussed above. We ask whether $$j \in \operatorname{Inf}$$? If so, then $$W$$ is infinite, and thus $$\Phi_e(x) \uparrow$$, so $$\langle e, x \rangle \not\in K$$. Otherwise, $$W$$ is finite, and therefore, by some step $$s$$, we know that $$\Phi_e(x)[s] \downarrow$$, hence $$\Phi_e(x) \downarrow$$, so $$\langle e, x \rangle \in K$$. Thus, we may use $$\operatorname{Inf}$$ to decide membership in $$K$$. 
 
 Define two problems $$f, g$$ to be *Turing-equivalent* if they are mutually Turing-reducible, i.e.:
 

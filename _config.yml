@@ -3,6 +3,9 @@ description: "My CV and Projects"
 author: "Raymond Tana"
 baseurl: "" 
 custom_css: my_assets/css/custom.css
+og_image: /my_assets/images/RaTeX.png
+twitter:
+  username: pretermath
 
 # Defaults
 defaults:
