@@ -5,6 +5,9 @@ categories:
   - Math
 tags:
   - Computability
+header:
+  og_image: /my_assets/images/rep_theory/real_numbers.png
+  teaser: /my_assets/images/rep_theory/real_numbers.png
 ---
 
 ## Basic Numerical Representations
