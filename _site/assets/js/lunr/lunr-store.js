@@ -9,11 +9,11 @@ var store = [{
         "excerpt":"Basic Numerical Representations In my research, there is often an interplay between various representations of analogous objects: Any natural number $n \\in \\mathbb{N}$ is re-expressible as a tally of $n$-many $1$s. Any set $A \\subset \\mathbb{N}$ of natural numbers is re-expressible as a characteristic function $\\chi_A$ on $\\mathbb{N}$ such that...","categories": ["Math"],
         "tags": ["Computability"],
         "url": "/math/2023/09/18/the-theory-of-representations.html",
-        "teaser": null
+        "teaser": "/my_assets/images/rep_theory/real_numbers.png"
       },{
         "title": "Memory Layout in Zig with Formulas",
         "excerpt":"I was recently encouraged to watch A Practical Guide to Applying Data Oriented Design (DoD) by Andrew Kelley, the creator of Zig1. Just 10 minutes into the talk, I was confronted with a skill I had never formally learned… the arithmetic behind memory layout of types. Throughout the talk, Andrew...","categories": ["Math","Programming"],
         "tags": ["Zig","Compiler"],
-        "url": "/math/programming/2026/01/22/zig-alignment-and-sizing.html",
-        "teaser": null
+        "url": "/math/programming/2026/01/23/zig-alignment-and-sizing.html",
+        "teaser": "/my_assets/images/zig_logo.jpg"
       }]
