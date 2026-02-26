@@ -3,7 +3,8 @@ description: "My CV and Projects"
 author: "Raymond Tana"
 baseurl: "" 
 custom_css: my_assets/css/custom.css
-og_image: /my_assets/images/RaTeX.png
+og_image: /my_assets/images/RayTeX.png
+logo: /my_assets/images/RayTeX_square.svg
 twitter:
   username: pretermath
 

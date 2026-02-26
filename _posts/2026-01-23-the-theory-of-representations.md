@@ -139,12 +139,6 @@ The correction was phrased in terms of achieving two desirable properties:
   <figcaption>Desirable Property (B): uniform computation between rationals.</figcaption>
 </figure>
 
-<!-- ![Property A](/my_assets/images/rep_theory/-A-.png)
-Desirable Property (A): computable number density between rationals. 
-
-![Property B](/my_assets/images/rep_theory/-B-.png)
-Desirable Property (B): uniform computation between rationals. -->
-
 Rewritten in modern terminology, Turing hopes that whatever rule we adopt for defining a computable real number would satisfy the two properties:
 
 > (A) **Computable Density in Rationals**: if there is a single (i.e., uniform) algorithm computing a pair of rational sequences $(a_n), (b_n)$ such that for every $n$ the terms are ordered as so: $a_n \leq a_{n + 1} < b_{n + 1} \leq b_n$ and the difference $b_n - a_n < 2^{-n}$ shrinks sufficiently fast, then there exists a computable number $\alpha$ always between the two sequences: $a_n \leq \alpha \leq b_n$ for each $n$.
