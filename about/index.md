@@ -5,7 +5,7 @@ title: "About Me"
 
 I am a mathematician, researcher, and developer. I hold a PhD in Mathematics from Penn State University, with a focus in Logic and Theoretical Computer Science. 
 
-I currently work at [Butter](https://docs.butter.dev/) as a research engineer.
+I currently work at [Butter](https://docs.butter.dev/) as an engineer working on [bVisor](https://github.com/butter-dot-dev/bVisor).
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/raymond-tana-0840121a7/)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)](https://github.com/RaymondTana)
