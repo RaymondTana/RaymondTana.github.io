@@ -10,7 +10,6 @@ Welcome to my personal site. I am a mathematician, researcher, and developer. I 
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/raymond-tana-0840121a7/)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)](https://github.com/RaymondTana)
-[![Blog](https://img.shields.io/badge/Sifter_Blog-black?logo=ghost&logoColor=white)](https://sifter.ghost.io/) 
 
 ![Raymond Tana headshot](./my_assets/images/headshot.jpeg)
 

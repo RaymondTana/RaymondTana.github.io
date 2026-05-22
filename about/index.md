@@ -5,27 +5,29 @@ title: "About Me"
 
 I am a mathematician, researcher, and developer. I hold a PhD in Mathematics from Penn State University, with a focus in Logic and Theoretical Computer Science. 
 
-I currently work at [Butter](https://docs.butter.dev/) as an engineer working on [bVisor](https://github.com/butter-dot-dev/bVisor).
+I work at Modal as an Member of Technical Staff.
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/raymond-tana-0840121a7/)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)](https://github.com/RaymondTana)
-[![Blog](https://img.shields.io/badge/Sifter_Blog-black?logo=ghost&logoColor=white)](https://sifter.ghost.io/)
 
 ## Personal Information
 - My [LinkedIn profile](https://www.linkedin.com/in/raymond-tana-0840121a7/).
 - My [GitHub profile](https://github.com/RaymondTana).
-- My technical blog, [Sifter](https://sifter.ghost.io/). 
+- My new technical blog, [Blog](https://raymondtana.github.io/blog/).
+- My old technical blog, [Sifter](https://sifter.ghost.io/). 
 - My academic advisors at Penn State were [Dr. Jan Reimann](https://science.psu.edu/math/people/jsr25) and [Dr. Linda Westrick](http://www.personal.psu.edu/lzw299/).
 - I am always working on my second and third languages: Español and Português! 
 - You may know me by my old name: Raymond *Friend*. My last name has changed to *Tana*.
 
 ## Roles
-- **Research Engineer**: At Butter, we are building muscle memory for LLM requests using an OpenAI-compatible API proxy which forwards novel requests to inference providers and caches their responses, serving from cache whenever an incoming request has been seen before. I head our R&D. Check out our [blog](https://blog.butter.dev/)!
-- **Software Development**: I have produced applications for the Reliability Engineering team at ASML, as well as built some accessible platforms for the Mathematics Department at Penn State University.
-- **Graduate Teaching Assistant**: I have taught various courses at Penn State, including [MATH 033: Mathematics for Sustainability](https://www.psu.edu/news/eberly-college-science/story/using-sustainability-make-introductory-stem-courses-meaningful/), (I'm quoted in the linked article), MATH 230: Calculus and Vector Analysis, and MATH 486: Mathematical Theory of Games.
-- **Sustainability Chair**: I have served as the Graduate Chair on the [Eberly College of Science Sustainability Council](https://science.psu.edu/about/leadership/sustainability-council) for the last four full academic years.
-- **Sustainability Advocate**: I also served as the leader for the Carbon Neutral Working Group with the Student Sustainability Advisory Council (SSAC) for two academic years. Here is a [presentation of our final recommendations from Fall 2021](https://pennstateoffice365.sharepoint.com/:p:/s/SSAC2021-202257/EV5n9seAeaZHmW0KhekxhToBwIBxW7bnfDPO_naWxsAj_Q?e=cCuToc). I was [interviewed about my sustainability advocacy](https://medium.com/statecollegespark/students-advocate-for-a-greener-campus-7e42883a7c5e) by Ava Klink for SPARK. 
-- **Logic**: I was a member of the [Penn State Logic Group](https://logic.math.psu.edu/) headed by Drs. Jan Reimann and Linda Westrick. We would meet weekly for 1.5 hours in our Logic Seminar to talk about current topics and have an internal or external speaker present.
+- **Member of Technical Staff** at [Modal](https://www.modal.com) (current): I work on developer and agent experience. 
+- **Research Engineer** at [Butter](https://www.butter.dev/): I worked on building ephemeral sandboxes for untrusted code, as well as muscle memory for LLM responses. See [bVisor](https://github.com/butter-dot-dev/bVisor). Butter was [acquired by Modal](https://modal.com/blog/butter-is-joining-modal) in early 2026. 
+- **Software Development** at [ASML](https://www.asml.com/en): I produced software for conducting failure analysis for the Reliability Engineering team at ASML
+- **Software Development** at Penn State, as well as built some accessible platforms for the Mathematics Department at Penn State University.
+- **Graduate Teaching Assistant** at Penn State: I have taught various courses at Penn State, including [MATH 033: Mathematics for Sustainability](https://www.psu.edu/news/eberly-college-science/story/using-sustainability-make-introductory-stem-courses-meaningful/), (I'm quoted in the linked article), MATH 230: Calculus and Vector Analysis, and MATH 486: Mathematical Theory of Games.
+- **Sustainability Chair** at Penn State: I have served as the Graduate Chair on the [Eberly College of Science Sustainability Council](https://science.psu.edu/about/leadership/sustainability-council) for the last four full academic years.
+- **Sustainability Advocate** at Penn State: I also served as the leader for the Carbon Neutral Working Group with the Student Sustainability Advisory Council (SSAC) for two academic years. Here is a [presentation of our final recommendations from Fall 2021](https://pennstateoffice365.sharepoint.com/:p:/s/SSAC2021-202257/EV5n9seAeaZHmW0KhekxhToBwIBxW7bnfDPO_naWxsAj_Q?e=cCuToc). I was [interviewed about my sustainability advocacy](https://medium.com/statecollegespark/students-advocate-for-a-greener-campus-7e42883a7c5e) by Ava Klink for SPARK. 
+- **Logic Group Member** at Penn State: I participated in the [Penn State Logic Group](https://logic.math.psu.edu/) headed by Drs. Jan Reimann and Linda Westrick. We would meet weekly for 1.5 hours in our Logic Seminar to talk about current topics and have an internal or external speaker present.
 
 ## Projects
 - My main thread of mathematical research has focused on applying algorithmic information theory to geometric measure theory. This involves tools from logic, computability theory, and effective descriptive set theory. 
@@ -39,7 +41,8 @@ I currently work at [Butter](https://docs.butter.dev/) as an engineer working on
 - I have written a [research report](https://www.linkedin.com/feed/update/urn:li:activity:7088496715963482112/) in Portuguese about Ethnomathematics and the mathematical practices found in indigenous Brazilian practices. 
 
 ## Mathematical and Professional Experiences
-- I currently work at [Butter](https://docs.butter.dev/) as a research engineer. I started in September 2025.
+- I currently work as a member of technical staff at [Modal](https://www.modal.com).
+- I worked a small tech startup in San Francisco named [Butter](https://docs.butter.dev/) as a research engineer between September 2025 and February 2026.
 - I completed the Data Science bootcamp from the [Erdős Institute](https://www.erdosinstitute.org/) during Fall 2024. I TA'd for the same bootcamp the following semester in Spring 2025. 
 - I interned with [ASML](https://www.asml.com/en) for 12 weeks as a Reliability Engineering and Software Development Intern in San Jose, California in Summer 2024. We improved failure rate prediction tools for components of EUV (lithography) machines.
 - I participated in the 12-week [BlueDot Impact AI Safety Fundamentals bootcamp](https://aisafetyfundamentals.com/) in Spring 2024. We covered reinforcement learning, interpretability, governance, and other alignment paradigms.  
