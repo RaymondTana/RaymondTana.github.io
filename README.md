@@ -14,9 +14,10 @@ This site uses the `github-pages` gem, which bundles Jekyll with a markdown proc
 brew install ruby
 ```
 
-2. Add Homebrew Ruby to PATH (`~/.zshrc` or `~/.bashrc`):
+2. Add Homebrew Ruby (and its gem executables) to PATH, and use a UTF-8 locale (`~/.zshrc` or `~/.bashrc`):
 ```bash
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH="/opt/homebrew/opt/ruby/bin:/opt/homebrew/lib/ruby/gems/4.0.0/bin:$PATH"
+export LANG=en_US.UTF-8   # without this, Jekyll crashes on non-ASCII filenames
 ```
 And then reload your shell (e.g., `source ~/.zshrc`).
 
@@ -33,9 +34,13 @@ bundle install
 
 5. Run the Local Server
 ```bash
-bundle exec jekyll serve
+bundle exec jekyll serve --livereload
 ```
 And visit `http://localhost:4000`.
+
+This clone is a blobless, sparse checkout, so `my_assets/audio/` is not on disk
+(`git sparse-checkout list` shows the patterns). Audio won't play locally, but
+everything else builds.
 
 (Many common errors can be avoided by deleting the existing `Gemfile.lock` and not using `sudo`).
 
