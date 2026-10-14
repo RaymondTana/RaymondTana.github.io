@@ -189,16 +189,56 @@ function persistCurrentGame(status) {
 
 /******* Language input *******/
 
-function populateLanguageSelect() {
+let comboActiveIndex = -1;
+
+// Languages still guessable, filtered by what's typed: prefix matches first, then substring matches
+function filteredLanguages(text) {
+    const needle = text.trim().toLowerCase();
+    const remaining = gameData.languages.filter(lang => !previousGuesses.includes(lang));
+    if (!needle) return remaining;
+    const starts = remaining.filter(lang => lang.toLowerCase().startsWith(needle));
+    const contains = remaining.filter(lang => !starts.includes(lang) && lang.toLowerCase().includes(needle));
+    return [...starts, ...contains];
+}
+
+function openLanguageList() {
+    const input = document.getElementById('languageSelect');
     const list = document.getElementById('languageOptions');
-    list.innerHTML = '';
-    gameData.languages
-        .filter(lang => !previousGuesses.includes(lang))
-        .forEach(lang => {
-            const option = document.createElement('option');
-            option.value = lang;
-            list.appendChild(option);
-        });
+    const options = filteredLanguages(input.value);
+    comboActiveIndex = -1;
+    list.innerHTML = options.length
+        ? options.map((lang, i) => `<li role="option" id="lang-opt-${i}" data-value="${escapeHTML(lang)}">${escapeHTML(lang)}</li>`).join('')
+        : '<li class="combo-empty">No matching languages</li>';
+    list.hidden = false;
+    list.scrollTop = 0;
+    input.setAttribute('aria-expanded', 'true');
+}
+
+function closeLanguageList() {
+    const list = document.getElementById('languageOptions');
+    list.hidden = true;
+    comboActiveIndex = -1;
+    document.getElementById('languageSelect').setAttribute('aria-expanded', 'false');
+}
+
+function moveActiveOption(delta) {
+    const items = document.querySelectorAll('#languageOptions li[role="option"]');
+    if (!items.length) return;
+    comboActiveIndex = (comboActiveIndex + delta + items.length) % items.length;
+    items.forEach((li, i) => li.classList.toggle('active', i === comboActiveIndex));
+    items[comboActiveIndex].scrollIntoView({ block: 'nearest' });
+    document.getElementById('languageSelect').setAttribute('aria-activedescendant', items[comboActiveIndex].id);
+}
+
+function chooseLanguage(lang) {
+    const input = document.getElementById('languageSelect');
+    input.value = lang;
+    document.getElementById('guessBtn').disabled = !matchLanguage(lang);
+    closeLanguageList();
+}
+
+function populateLanguageSelect() {
+    closeLanguageList();
 }
 
 // Map whatever was typed onto a canonical language name (case-insensitive), or null
@@ -214,11 +254,50 @@ function setupEventListeners() {
     document.getElementById('giveUpBtn').addEventListener('click', giveUp);
     input.addEventListener('input', function() {
         document.getElementById('guessBtn').disabled = !matchLanguage(this.value);
+        openLanguageList();
     });
+    input.addEventListener('focus', openLanguageList);
+    input.addEventListener('click', openLanguageList);
+    // Delay so a tap on an option still registers on browsers that blur first
+    input.addEventListener('blur', () => setTimeout(() => {
+        if (document.activeElement !== input) closeLanguageList();
+    }, 150));
     input.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
+        const listOpen = !document.getElementById('languageOptions').hidden;
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
             e.preventDefault();
-            makeGuess();
+            if (!listOpen) openLanguageList();
+            moveActiveOption(e.key === 'ArrowDown' ? 1 : -1);
+        } else if (e.key === 'Escape') {
+            closeLanguageList();
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            const active = document.getElementById(`lang-opt-${comboActiveIndex}`);
+            if (listOpen && active) {
+                chooseLanguage(active.dataset.value);
+            } else if (!matchLanguage(this.value) && filteredLanguages(this.value).length === 1) {
+                chooseLanguage(filteredLanguages(this.value)[0]); // unambiguous partial match
+            } else {
+                closeLanguageList();
+                makeGuess();
+            }
+        }
+    });
+    // preventDefault on mousedown keeps focus in the input; selection happens on click (a tap, not a scroll)
+    const list = document.getElementById('languageOptions');
+    list.addEventListener('mousedown', e => e.preventDefault());
+    list.addEventListener('click', function(e) {
+        const li = e.target.closest('li[role="option"]');
+        if (li) chooseLanguage(li.dataset.value);
+    });
+    const toggle = document.getElementById('comboToggle');
+    toggle.addEventListener('mousedown', e => e.preventDefault());
+    toggle.addEventListener('click', function() {
+        if (list.hidden) {
+            input.focus();
+            openLanguageList();
+        } else {
+            closeLanguageList();
         }
     });
 

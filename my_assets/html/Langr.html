@@ -39,9 +39,14 @@
 
         <div class="guess-section" id="guessSection">
             <div class="guess-controls">
-                <input class="language-select" id="languageSelect" list="languageOptions"
-                       placeholder="Type or pick a language..." autocomplete="off" spellcheck="false">
-                <datalist id="languageOptions"></datalist>
+                <div class="combo">
+                    <input class="language-select" id="languageSelect" role="combobox"
+                           aria-expanded="false" aria-controls="languageOptions" aria-autocomplete="list"
+                           placeholder="Type or pick a language..." autocomplete="off" autocorrect="off"
+                           autocapitalize="off" spellcheck="false">
+                    <button class="combo-toggle" id="comboToggle" type="button" tabindex="-1" aria-label="Show all languages">▾</button>
+                    <ul class="combo-list" id="languageOptions" role="listbox" hidden></ul>
+                </div>
                 <button class="guess-btn" id="guessBtn">Guess!</button>
                 <button class="give-up-btn" id="giveUpBtn">Give Up</button>
             </div>
