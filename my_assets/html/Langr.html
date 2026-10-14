@@ -17,27 +17,31 @@
         
         <div class="game-info">
             <div class="game-stats">
-                <div class="guess-counter">Guess: <span id="guessCount">1</span></div>
+                <div class="guess-counter"><span id="guessLabel">Guess:</span> <span id="guessCount">1</span></div>
                 <div class="date-tools">
-                <span id="currentDateDisplay" class="current-date-display"></span>
-                <div class="calendar-picker">
-                    <button class="calendar-icon" type="button">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"/>
-                            <path d="M5 22h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2zM19 8H5v12h14V8z"/>
-                        </svg>
-                    </button>
-                    <input type="date" class="hidden-date-input" id="dateSelect">
+                    <button class="day-nav" id="prevDayBtn" type="button" aria-label="Previous day">‹</button>
+                    <span id="currentDateDisplay" class="current-date-display"></span>
+                    <button class="day-nav" id="nextDayBtn" type="button" aria-label="Next day">›</button>
+                    <div class="calendar-picker">
+                        <button class="calendar-icon" type="button" aria-label="Pick a date">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"/>
+                                <path d="M5 22h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2zM19 8H5v12h14V8z"/>
+                            </svg>
+                        </button>
+                        <input type="date" class="hidden-date-input" id="dateSelect">
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
         
-        <div class="guess-section">
+        <div class="result-panel" id="resultPanel" style="display: none;"></div>
+
+        <div class="guess-section" id="guessSection">
             <div class="guess-controls">
-                <select class="language-select" id="languageSelect">
-                    <option value="">Select a language...</option>
-                </select>
+                <input class="language-select" id="languageSelect" list="languageOptions"
+                       placeholder="Type or pick a language..." autocomplete="off" spellcheck="false">
+                <datalist id="languageOptions"></datalist>
                 <button class="guess-btn" id="guessBtn">Guess!</button>
                 <button class="give-up-btn" id="giveUpBtn">Give Up</button>
             </div>
@@ -45,7 +49,6 @@
         </div>
 
         <div id="previousGuessesDisplay" class="previous-guesses-container">
-            <div class="previous-guesses-label">Previous guesses: <span style="color: #999;">None yet</span></div>
         </div>
 
         <div class="clues-section" id="cluesSection">
@@ -68,11 +71,12 @@
                 <h3>How It Works</h3>
                 <ul>
                     <li>You'll receive clues one-by-one to help identify the language.</li>
-                    <li>Make your guess using the dropdown menu.</li>
+                    <li>Type a language (or pick from the list) and press <strong>Enter</strong>.</li>
                     <li>If incorrect, you'll get the next clue.</li>
                     <li>Keep guessing until you find the right answer!</li>
                     <li>You only have <strong>6 guesses!</strong></li>
-                    <li><strong>Need more?</strong> Use the calendar to play previous days' games!</li>
+                    <li>When the game ends, every clue is unlocked along with the language's full family tree.</li>
+                    <li><strong>Need more?</strong> Use the ‹ › arrows or the calendar to play previous days' games. Your progress on each day is saved.</li>
                 </ul>
                 
                 <h3>Clue Order</h3>

@@ -5,12 +5,19 @@ let gameData = {
     allRows: [] // Store all CSV data for date exploration
 };
 
+const MAX_GUESSES = 6;
+const FIRST_DATE = '2025-06-13'; // Langr #1
+const SHARE_URL = 'https://raymondtana.github.io/projects/pages/Langr.html';
+const STORAGE_KEY = 'langr-results-v1';
+
+const DECOY_LANGUAGES = ['Abkhaz', 'Afrikaans', 'Albanian', 'Amharic', 'Arabic', 'Armenian', 'Assamese', 'Asturian', 'Azerbaijani', 'Basaa', 'Bashkir', 'Basque', 'Belarusian', 'Bengali', 'Breton', 'Bulgarian', 'Cantonese', 'Catalan', 'Central Kurdish', 'Chuvash', 'Czech', 'Danish', 'Dhivehi', 'Dioula', 'Dutch', 'Erzya', 'Esperanto', 'Estonian', 'Finnish', 'French', 'Frisian', 'Galician', 'Georgian', 'German', 'Greek', 'Guarani', 'Hakha Chin', 'Hausa', 'Hebrew', 'Hill Mari', 'Hindi', 'Hungarian', 'Icelandic', 'Igbo', 'Indonesian', 'Interlingua', 'Irish', 'Italian', 'Japanese', 'Kabyle', 'Kazakh', 'Kinyarwanda', 'Korean', 'Kurmanji Kurdish', 'Kyrgyz', 'Lao', 'Latvian', 'Lithuanian', 'Luganda', 'Macedonian', 'Malayalam', 'Maltese', 'Mandarin', 'Marathi', 'Meadow Mari', 'Moksha', 'Mongolian', 'Nepali', 'Norwegian Nynorsk', 'Occitan', 'Odia', 'Pashto', 'Persian', 'Polish', 'Portuguese', 'Punjabi', 'Quechua Chanka', 'Romanian', 'Russian', 'Sakha', 'Santali', 'Saraiki', 'Sardinian', 'Serbian', 'Slovak', 'Slovenian', 'Sorbian', 'Spanish', 'Swahili', 'Swedish', 'Taiwanese', 'Tamazight', 'Tamil', 'Tatar', 'Thai', 'Tigre', 'Tigrinya', 'Toki Pona', 'Turkish', 'Turkmen', 'Twi', 'Ukrainian', 'Urdu', 'Uyghur', 'Uzbek', 'Vietnamese', 'Votic', 'Welsh', 'Yoruba'];
+
 let currentClueIndex = 0;
 let guessCount = 1;
 let gameEnded = false;
 let previousGuesses = [];
 let currentDate = null; // Track current game date
-let isExploringPastDate = false;
+let countdownTimer = null;
 
 document.getElementById('guessBtn').disabled = true;
 
@@ -18,10 +25,8 @@ document.getElementById('guessBtn').disabled = true;
 async function initGame() {
     try {
         await loadGameData();
-        populateLanguageSelect();
         setupEventListeners();
-        showNextClue(); // Show first clue after data is loaded
-        updatePreviousGuessesDisplay(); // Initialize empty display
+        startGameForCurrentDate();
     } catch (error) {
         console.error('Failed to initialize game:', error);
         showError('Failed to load game data. Please refresh the page.');
@@ -38,70 +43,60 @@ function fallbackRow(rows, today) {
     return rows[Math.abs(h) % rows.length];
 }
 
-// Load and parse CSV data
+// Load and parse CSV data (only fetched once; switching dates reuses allRows)
 async function loadGameData(targetDate = null) {
-    try {
+    if (gameData.allRows.length === 0) {
         const response = await fetch('../csv/Langr.csv');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const csvText = await response.text();
-        
-        // Parse CSV
-        const rows = parseCSV(csvText);
+        const rows = parseCSV(await response.text());
         if (rows.length === 0) {
             throw new Error('No data found in CSV file');
         }
-        
-        // Store all rows for date exploration
+        const answerLanguages = rows.map(row => row.language);
         gameData.allRows = rows;
-        
-        // Get target date (either specified or today)
-        const gameDate = targetDate || localISODate();
-        currentDate = gameDate;
-        isExploringPastDate = targetDate !== null && targetDate !== localISODate();
-
-        // Find the row for the target date
-        let targetRow = rows.find(row => row.date === gameDate);
-        if (!targetRow) {
-            console.warn(`No row for ${gameDate}; falling back to a random entry.`);
-            targetRow = fallbackRow(rows, gameDate);
-        }
-        
-        // Set game data
-        gameData = {
-            ...gameData, // Keep allRows and other existing data
-            languages: ['Abkhaz', 'Afrikaans', 'Albanian', 'Amharic', 'Arabic', 'Armenian', 'Assamese', 'Asturian', 'Azerbaijani', 'Basaa', 'Bashkir', 'Basque', 'Belarusian', 'Bengali', 'Breton', 'Bulgarian', 'Cantonese', 'Catalan', 'Central Kurdish', 'Chuvash', 'Czech', 'Danish', 'Dhivehi', 'Dioula', 'Dutch', 'Erzya', 'Esperanto', 'Estonian', 'Finnish', 'French', 'Frisian', 'Galician', 'Georgian', 'German', 'Greek', 'Guarani', 'Hakha Chin', 'Hausa', 'Hebrew', 'Hill Mari', 'Hindi', 'Hungarian', 'Icelandic', 'Igbo', 'Indonesian', 'Interlingua', 'Irish', 'Italian', 'Japanese', 'Kabyle', 'Kazakh', 'Kinyarwanda', 'Korean', 'Kurmanji Kurdish', 'Kyrgyz', 'Lao', 'Latvian', 'Lithuanian', 'Luganda', 'Macedonian', 'Malayalam', 'Maltese', 'Mandarin', 'Marathi', 'Meadow Mari', 'Moksha', 'Mongolian', 'Nepali', 'Norwegian Nynorsk', 'Occitan', 'Odia', 'Pashto', 'Persian', 'Polish', 'Portuguese', 'Punjabi', 'Quechua Chanka', 'Romanian', 'Russian', 'Sakha', 'Santali', 'Saraiki', 'Sardinian', 'Serbian', 'Slovak', 'Slovenian', 'Sorbian', 'Spanish', 'Swahili', 'Swedish', 'Taiwanese', 'Tamazight', 'Tamil', 'Tatar', 'Thai', 'Tigre', 'Tigrinya', 'Toki Pona', 'Turkish', 'Turkmen', 'Twi', 'Ukrainian', 'Urdu', 'Uyghur', 'Uzbek', 'Vietnamese', 'Votic', 'Welsh', 'Yoruba'],
-            todaysLanguage: targetRow,
-            allRows: rows
-        };
-        
-        console.log('Game data loaded successfully:', gameData);
-        updateDateDisplay();
-        setupDatePickerRestrictions();
-        
-    } catch (error) {
-        console.error('Error loading CSV data:', error);
-        throw error;
+        gameData.languages = [...new Set([...DECOY_LANGUAGES, ...answerLanguages])].sort();
     }
+
+    currentDate = targetDate || localISODate();
+
+    let targetRow = gameData.allRows.find(row => row.date === currentDate);
+    if (!targetRow) {
+        console.warn(`No row for ${currentDate}; falling back to a random entry.`);
+        targetRow = fallbackRow(gameData.allRows, currentDate);
+    }
+    gameData.todaysLanguage = targetRow;
+
+    updateDateDisplay();
+    setupDatePickerRestrictions();
 }
 
 // Get local date in YYYY-MM-DD format
-function localISODate() {
-    const d = new Date();
-    d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
-    return d.toISOString().slice(0, 10); // YYYY-MM-DD
+function localISODate(d = new Date()) {
+    const local = new Date(d);
+    local.setMinutes(local.getMinutes() - local.getTimezoneOffset());
+    return local.toISOString().slice(0, 10); // YYYY-MM-DD
 }
 
-// Simple CSV parser
+function shiftISODate(iso, days) {
+    const d = new Date(iso + 'T12:00:00');
+    d.setDate(d.getDate() + days);
+    return localISODate(d);
+}
+
+function puzzleNumber(iso) {
+    const ms = new Date(iso + 'T12:00:00') - new Date(FIRST_DATE + 'T12:00:00');
+    return Math.round(ms / 86400000) + 1;
+}
+
+// CSV parser that handles quoted fields, escaped "" quotes, and commas inside quotes
 function parseCSV(csvText) {
     const lines = csvText.trim().split('\n');
     if (lines.length < 2) return [];
-    
-    // Get headers
-    const headers = lines[0].split(',').map(header => header.trim().replace(/"/g, ''));
-    
-    // Parse data rows
+
+    const headers = parseCSVLine(lines[0]);
+
     const rows = [];
     for (let i = 1; i < lines.length; i++) {
         const values = parseCSVLine(lines[i]);
@@ -113,21 +108,25 @@ function parseCSV(csvText) {
             rows.push(row);
         }
     }
-    
+
     return rows;
 }
 
-// Parse a single CSV line (handles quoted values with commas)
 function parseCSVLine(line) {
     const values = [];
     let current = '';
     let inQuotes = false;
-    
+
     for (let i = 0; i < line.length; i++) {
         const char = line[i];
-        
+
         if (char === '"') {
-            inQuotes = !inQuotes;
+            if (inQuotes && line[i + 1] === '"') {
+                current += '"';
+                i++;
+            } else {
+                inQuotes = !inQuotes;
+            }
         } else if (char === ',' && !inQuotes) {
             values.push(current.trim());
             current = '';
@@ -135,9 +134,15 @@ function parseCSVLine(line) {
             current += char;
         }
     }
-    
+
     values.push(current.trim());
-    return values.map(value => value.replace(/"/g, ''));
+    return values;
+}
+
+function escapeHTML(str) {
+    return String(str ?? '').replace(/[&<>"']/g, c => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
 }
 
 function showError(message) {
@@ -154,34 +159,69 @@ function showError(message) {
     `;
 }
 
-function populateLanguageSelect() {
-    const select = document.getElementById('languageSelect');
-    // Clear existing options except the default one
-    select.innerHTML = '<option value="">Select a language...</option>';
-    
-    gameData.languages.forEach(lang => {
-        const option = document.createElement('option');
-        option.value = lang;
-        option.textContent = lang;
-        
-        // Disable if already guessed
-        if (previousGuesses.includes(lang)) {
-            option.disabled = true;
-            option.textContent += ' (already guessed)';
-        }
-        
-        select.appendChild(option);
+/******* Saved results (localStorage) *******/
+
+function loadResults() {
+    try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    } catch (e) {
+        return {};
+    }
+}
+
+function saveResult(date, result) {
+    try {
+        const results = loadResults();
+        results[date] = result;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(results));
+    } catch (e) {
+        // Storage unavailable (private mode, blocked cookies); progress just won't persist
+    }
+}
+
+function persistCurrentGame(status) {
+    saveResult(currentDate, {
+        answer: gameData.todaysLanguage.language,
+        guesses: previousGuesses.slice(),
+        status: status // 'playing' | 'won' | 'lost'
     });
 }
 
+/******* Language input *******/
+
+function populateLanguageSelect() {
+    const list = document.getElementById('languageOptions');
+    list.innerHTML = '';
+    gameData.languages
+        .filter(lang => !previousGuesses.includes(lang))
+        .forEach(lang => {
+            const option = document.createElement('option');
+            option.value = lang;
+            list.appendChild(option);
+        });
+}
+
+// Map whatever was typed onto a canonical language name (case-insensitive), or null
+function matchLanguage(text) {
+    const needle = text.trim().toLowerCase();
+    if (!needle) return null;
+    return gameData.languages.find(lang => lang.toLowerCase() === needle) || null;
+}
+
 function setupEventListeners() {
+    const input = document.getElementById('languageSelect');
     document.getElementById('guessBtn').addEventListener('click', makeGuess);
     document.getElementById('giveUpBtn').addEventListener('click', giveUp);
-    document.getElementById('languageSelect').addEventListener('change', function() {
-        document.getElementById('guessBtn').disabled = !this.value;
+    input.addEventListener('input', function() {
+        document.getElementById('guessBtn').disabled = !matchLanguage(this.value);
     });
-    
-    // Updated date picker event listener
+    input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            makeGuess();
+        }
+    });
+
     document.getElementById('dateSelect').addEventListener('change', function() {
         const selectedDate = this.value;
         if (selectedDate && validateDateSelection(selectedDate)) {
@@ -190,6 +230,8 @@ function setupEventListeners() {
             this.value = '';
         }
     });
+    document.getElementById('prevDayBtn').addEventListener('click', () => stepDate(-1));
+    document.getElementById('nextDayBtn').addEventListener('click', () => stepDate(1));
 }
 
 document.addEventListener('click', function(e) {
@@ -202,128 +244,145 @@ document.addEventListener('click', function(e) {
     }
 });
 
+function showIncorrectMessage(text) {
+    const incorrectMessage = document.getElementById('incorrectMessage');
+    incorrectMessage.textContent = text;
+    incorrectMessage.style.display = 'none';
+    void incorrectMessage.offsetWidth; // restart shake animation
+    incorrectMessage.style.display = 'block';
+    clearTimeout(showIncorrectMessage.timer);
+    showIncorrectMessage.timer = setTimeout(() => {
+        incorrectMessage.style.display = 'none';
+    }, 5000);
+}
+
 function makeGuess() {
     if (gameEnded) return;
 
-    const selectedLanguage = document.getElementById('languageSelect').value;
-    const incorrectMessage = document.getElementById('incorrectMessage');
-    
-    if (!selectedLanguage) return;
+    const input = document.getElementById('languageSelect');
+    const selectedLanguage = matchLanguage(input.value);
 
-    if(previousGuesses.includes(selectedLanguage)) {
-        incorrectMessage.textContent = `You already guessed "${selectedLanguage}". Try a different language!`;
-        incorrectMessage.style.display = 'block';
-        setTimeout(() => {
-            incorrectMessage.style.display = 'none';
-        }, 5000);
+    if (!selectedLanguage) {
+        if (input.value.trim()) showIncorrectMessage(`"${input.value.trim()}" isn't in the list of languages.`);
         return;
     }
-    
-    if (selectedLanguage === gameData.todaysLanguage.language) {
-        previousGuesses.push(selectedLanguage);
-        updatePreviousGuessesDisplay();
-        showCelebration();
-        gameEnded = true;
-    } else {
-        // Add to previous guesses
-        previousGuesses.push(selectedLanguage);
-        updatePreviousGuessesDisplay();
-        populateLanguageSelect(); // Refresh dropdown to disable guessed language
 
-        if( guessCount >= 6) {
-            showSadCelebration();
-            gameEnded = true;
-            return;
-        }
-        // Show incorrect message
-        incorrectMessage.textContent = `Incorrect! "${selectedLanguage}" is not the right answer.`;
-        incorrectMessage.style.display = 'block';
-        
-        // Hide message after 3 seconds
-        setTimeout(() => {
-            incorrectMessage.style.display = 'none';
-        }, 5000);
-
-        // Show next clue
-        showNextClue();
-        guessCount++;
-        document.getElementById('guessCount').textContent = guessCount;
+    if (previousGuesses.includes(selectedLanguage)) {
+        showIncorrectMessage(`You already guessed "${selectedLanguage}". Try a different language!`);
+        return;
     }
 
-    // Reset selection
-    document.getElementById('languageSelect').value = '';
+    previousGuesses.push(selectedLanguage);
+    input.value = '';
     document.getElementById('guessBtn').disabled = true;
+
+    if (selectedLanguage === gameData.todaysLanguage.language) {
+        endGame('won', true);
+        return;
+    }
+
+    if (previousGuesses.length >= MAX_GUESSES) {
+        endGame('lost', true);
+        return;
+    }
+
+    persistCurrentGame('playing');
+    updatePreviousGuessesDisplay();
+    populateLanguageSelect();
+    showIncorrectMessage(`Incorrect! "${selectedLanguage}" is not the right answer.`);
+    showNextClue();
+    guessCount++;
+    document.getElementById('guessCount').textContent = guessCount;
 }
 
 function giveUp() {
     if (gameEnded) return;
     document.getElementById('languageSelect').value = '';
     document.getElementById('guessBtn').disabled = true;
-    showSadCelebration();
-    gameEnded = true
+    endGame('lost', true);
+}
+
+/******* Clues *******/
+
+function getClues() {
+    const lang = gameData.todaysLanguage;
+    const textClue = (value) => value && value.trim()
+        ? `<div class="text-content">${escapeHTML(value)}</div>`
+        : `<div class="text-content empty">(not available for this day)</div>`;
+    return [
+        { header: '🔊 Audio Clue', content: createAudioClue() },
+        { header: '👂 Phonetic Transcription', content: textClue(lang.IPA) },
+        { header: '🔤 English Translation', content: textClue(lang.translation) },
+        { header: '🌳 Language Family', content: createFamilyClue() },
+        { header: '📝 Original Text', content: textClue(lang.sentence) }
+    ];
+}
+
+function renderClue(clue, extraClass = '') {
+    const clueDiv = document.createElement('div');
+    clueDiv.className = `clue ${extraClass}`.trim();
+    clueDiv.innerHTML = `
+        <div class="clue-header">${clue.header}${extraClass.includes('bonus') ? '<span class="clue-tag">Unlocked</span>' : ''}</div>
+        ${clue.content}
+    `;
+    document.getElementById('cluesSection').appendChild(clueDiv);
 }
 
 function showNextClue() {
-    const cluesSection = document.getElementById('cluesSection');
-    const clues = [
-        {
-            type: 'audio',
-            header: '🔊 Audio Clue',
-            content: createAudioClue()
-        },
-        {
-            type: 'transcription',
-            header: '👂 Phonetic Transcription',
-            content: `<div class="text-content">${gameData.todaysLanguage.IPA}</div>`
-        },
-        {
-            type: 'translation',
-            header: '🔤 English Translation',
-            content: `<div class="text-content">${gameData.todaysLanguage.translation}</div>`
-        },
-        {
-            type: 'family',
-            header: '🌳 Language Family',
-            content: createFamilyClue()
-        },
-        {
-            type: 'text',
-            header: '📝 Original Text',
-            content: `<div class="text-content">${gameData.todaysLanguage.sentence}</div>`
-        }
-    ];
-
+    const clues = getClues();
     if (currentClueIndex < clues.length) {
-        const clueDiv = document.createElement('div');
-        clueDiv.className = 'clue';
-        clueDiv.innerHTML = `
-            <div class="clue-header">${clues[currentClueIndex].header}</div>
-            ${clues[currentClueIndex].content}
-        `;
-        cluesSection.appendChild(clueDiv);
+        renderClue(clues[currentClueIndex]);
         currentClueIndex++;
     }
 }
 
-function createAudioClue() {
-    console.log('Current date:', currentDate);
-    console.log('Audio file for current date:', gameData.todaysLanguage.wave);
+// After the game ends, reveal every clue that wasn't shown, plus the answer card
+function revealAllClues() {
+    const clues = getClues();
+    while (currentClueIndex < clues.length) {
+        renderClue(clues[currentClueIndex], 'bonus');
+        currentClueIndex++;
+    }
+    renderAnswerCard();
+}
 
-    // Get audio file
-    const audioId = "audio-clue-" + currentDate; 
+function renderAnswerCard() {
+    const lang = gameData.todaysLanguage;
+    let lineage = [];
+    try {
+        lineage = JSON.parse(lang.lineage.replace(/'/g, '"'));
+    } catch (e) {
+        lineage = [lang.family_0, lang.family_1, lang.family_2].filter(Boolean);
+    }
+    const card = document.createElement('div');
+    card.className = 'clue answer-card';
+    card.innerHTML = `
+        <div class="clue-header">🌍 The Answer: ${escapeHTML(lang.language)}</div>
+        <div class="lineage">${lineage.map(l => `<span class="lineage-node">${escapeHTML(l)}</span>`).join('<span class="lineage-arrow">›</span>')}</div>
+        <div class="answer-links">
+            ISO 639-3: <code>${escapeHTML(lang.iso)}</code> ·
+            <a href="https://glottolog.org/glottolog?iso=${encodeURIComponent(lang.iso)}" target="_blank" rel="noopener">Glottolog</a> ·
+            <a href="https://en.wikipedia.org/wiki/ISO_639:${encodeURIComponent(lang.iso)}" target="_blank" rel="noopener">Wikipedia</a>
+        </div>
+    `;
+    document.getElementById('cluesSection').appendChild(card);
+}
+
+function createAudioClue() {
+    const audioId = "audio-clue-" + currentDate;
     const srcPath = `../audio/Langr/${gameData.todaysLanguage.wave}`;
 
     return `
         <div class="audio-player">
-            <audio id="${audioId}" src="${srcPath}"></audio>
+            <audio id="${audioId}" src="${srcPath}" preload="metadata"></audio>
 
-            <button class="play-btn" data-audio-id="${audioId}">
+            <button class="play-btn" data-audio-id="${audioId}" aria-label="Play audio clue">
                 ▶
             </button>
 
             <div class="audio-info">
                 <div>Audio sample</div>
-                <div>Sample rate: ${gameData.todaysLanguage.sampling_rate} Hz</div>
+                <div>Sample rate: ${escapeHTML(gameData.todaysLanguage.sampling_rate)} Hz</div>
             </div>
         </div>
     `;
@@ -335,11 +394,13 @@ function togglePlay(audioId, btn) {
     // Prevent multiple rapid clicks
     if (btn.disabled) return;
 
-    if (player.paused) {
-        // Disable button temporarily to prevent rapid clicks
-        btn.disabled = true;
+    // Only one clip at a time (the answer screen may have played several days)
+    document.querySelectorAll('audio').forEach(a => {
+        if (a !== player && !a.paused) a.pause();
+    });
 
-        // ensure we always start from the beginning when replaying
+    if (player.paused) {
+        btn.disabled = true;
         player.currentTime = 0;
 
         player.play().then(() => {
@@ -350,13 +411,12 @@ function togglePlay(audioId, btn) {
             btn.disabled = false;
         });
 
-        player.onended = () => {
+        player.onended = player.onpause = () => {
             btn.textContent = "▶";
             btn.disabled = false;
         };
     } else {
         player.pause();
-        btn.textContent = "▶";
     }
 }
 
@@ -365,30 +425,38 @@ function createFamilyClue() {
         gameData.todaysLanguage.family_0,
         gameData.todaysLanguage.family_1
     ].filter(f => f && f.trim() !== '');
-    
-    return `<div class="text-content">${families.join(' → ')}</div>`;
+
+    return `<div class="text-content">${families.map(escapeHTML).join(' → ')}</div>`;
 }
 
 function updatePreviousGuessesDisplay() {
     const guessesDisplay = document.getElementById('previousGuessesDisplay');
-    if (previousGuesses.length === 0) {
-        guessesDisplay.innerHTML = '<div class="previous-guesses-label">Previous guesses:</div><div class="previous-guesses-content">None yet</div>';
-    } else {
-        guessesDisplay.innerHTML = `
-            <div class="previous-guesses-label">Previous guesses:</div>
-            <div class="previous-guesses-content">${previousGuesses.join(' → ')}</div>
-        `;
-    }
+    const answer = gameData.todaysLanguage.language;
+    const chips = previousGuesses.length === 0
+        ? '<span class="no-guesses">None yet</span>'
+        : previousGuesses.map(g =>
+            `<span class="guess-chip ${g === answer ? 'correct' : 'wrong'}">${escapeHTML(g)}</span>`
+          ).join('');
+    guessesDisplay.innerHTML = `
+        <div class="previous-guesses-label">Previous guesses <span class="guesses-left">${previousGuesses.length}/${MAX_GUESSES}</span></div>
+        <div class="previous-guesses-content">${chips}</div>
+    `;
 }
+
+/******* Dates *******/
 
 function setupDatePickerRestrictions() {
     const dateInput = document.getElementById('dateSelect');
     const availableDates = getAvailableDates();
-    
+
     if (availableDates.length > 0) {
         dateInput.min = availableDates[0];
         dateInput.max = availableDates[availableDates.length - 1];
     }
+    dateInput.value = currentDate;
+
+    document.getElementById('prevDayBtn').disabled = currentDate <= availableDates[0];
+    document.getElementById('nextDayBtn').disabled = currentDate >= localISODate();
 }
 
 function getAvailableDates() {
@@ -400,282 +468,291 @@ function getAvailableDates() {
 }
 
 function validateDateSelection(selectedDate) {
-    const availableDates = getAvailableDates();
-    
-    if (!availableDates.includes(selectedDate)) {
+    if (!getAvailableDates().includes(selectedDate)) {
         alert('No game data available for this date. Please select a different date.');
         return false;
     }
-    
     return true;
 }
 
+function stepDate(delta) {
+    const target = shiftISODate(currentDate, delta);
+    if (getAvailableDates().includes(target)) loadGameForDate(target);
+}
+
+function randomUnplayedDate() {
+    const results = loadResults();
+    const unplayed = getAvailableDates().filter(d => d !== currentDate && !(results[d] && results[d].status !== 'playing'));
+    const pool = unplayed.length ? unplayed : getAvailableDates().filter(d => d !== currentDate);
+    return pool[Math.floor(Math.random() * pool.length)];
+}
+
 function loadGameForDate(targetDate) {
-    // Reset game state
-    currentClueIndex = 0;
-    guessCount = 1;
-    gameEnded = false;
-    previousGuesses = [];
-    
-    // Clear previous game display
-    document.getElementById('cluesSection').innerHTML = '';
-    document.getElementById('incorrectMessage').style.display = 'none';
-    document.getElementById('guessCount').textContent = guessCount;
-    document.getElementById('languageSelect').value = '';
-    document.getElementById('guessBtn').disabled = true;
-    
-    // Remove any existing celebration overlay
-    const existingCelebration = document.querySelector('.celebration');
-    if (existingCelebration) {
-        existingCelebration.remove();
-    }
-    
-    // Load new game data
+    document.querySelectorAll('audio').forEach(a => a.pause());
     loadGameData(targetDate).then(() => {
-        populateLanguageSelect();
-        showNextClue();
-        updatePreviousGuessesDisplay();
+        startGameForCurrentDate();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }).catch(error => {
         console.error('Error loading game for date:', error);
         showError('Failed to load game data for selected date.');
     });
 }
 
+// Reset the board, then replay any saved progress for currentDate
+function startGameForCurrentDate() {
+    currentClueIndex = 0;
+    gameEnded = false;
+    const saved = loadResults()[currentDate];
+    const savedIsValid = saved && saved.answer === gameData.todaysLanguage.language;
+    previousGuesses = savedIsValid ? saved.guesses.slice() : [];
+    guessCount = previousGuesses.length + 1;
+
+    document.getElementById('cluesSection').innerHTML = '';
+    document.getElementById('incorrectMessage').style.display = 'none';
+    document.getElementById('languageSelect').value = '';
+    document.getElementById('guessBtn').disabled = true;
+    document.getElementById('resultPanel').innerHTML = '';
+    document.getElementById('resultPanel').style.display = 'none';
+    document.getElementById('guessSection').style.display = '';
+    document.getElementById('guessLabel').textContent = 'Guess:';
+    document.getElementById('guessCount').textContent = guessCount;
+    clearInterval(countdownTimer);
+
+    populateLanguageSelect();
+    updatePreviousGuessesDisplay();
+
+    const cluesToShow = Math.min(previousGuesses.length + 1, getClues().length);
+    for (let i = 0; i < cluesToShow; i++) showNextClue();
+
+    if (savedIsValid && saved.status !== 'playing') {
+        endGame(saved.status, false);
+    }
+}
+
 function updateDateDisplay() {
     const dateDisplay = document.getElementById('currentDateDisplay');
     const today = localISODate();
-    
+
     const dateObj = new Date(currentDate + 'T00:00:00');
-    const formattedDate = dateObj.toLocaleDateString();
-    
+    const formattedDate = dateObj.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+
     if (currentDate === today) {
-        dateDisplay.textContent = `Today (${formattedDate})`;
+        dateDisplay.textContent = `Today · #${puzzleNumber(currentDate)}`;
+        dateDisplay.title = formattedDate;
         dateDisplay.className = 'current-date-display today';
     } else {
-        dateDisplay.textContent = formattedDate;
+        dateDisplay.textContent = `${formattedDate} · #${puzzleNumber(currentDate)}`;
+        dateDisplay.title = '';
         dateDisplay.className = 'current-date-display past-date';
     }
 }
 
-function getGameDateText() {
-    const today = localISODate();
-    if (currentDate === today) {
-        return "today's";
-    } else {
-        const dateObj = new Date(currentDate + 'T00:00:00');
-        return dateObj.toLocaleDateString('en-US'); // MM/DD/YYYY format
-    }
+/******* End of game *******/
+
+function endGame(status, justFinished) {
+    gameEnded = true;
+    const won = status === 'won';
+    if (justFinished) persistCurrentGame(status);
+
+    document.getElementById('guessSection').style.display = 'none';
+    document.getElementById('incorrectMessage').style.display = 'none';
+    document.getElementById('guessLabel').textContent = 'Score:';
+    document.getElementById('guessCount').textContent = won ? `${previousGuesses.length}/${MAX_GUESSES}` : `X/${MAX_GUESSES}`;
+    updatePreviousGuessesDisplay();
+    revealAllClues();
+    renderResultPanel(won);
+
+    if (justFinished && won) launchConfetti();
 }
 
-function showCelebration() {
-    const celebration = document.createElement('div');
-    celebration.className = 'celebration';
-    const gameDate = getGameDateText();
+function emojiRow() {
+    const answer = gameData.todaysLanguage.language;
+    const squares = previousGuesses.map(g => g === answer ? '🟩' : '🟥');
+    while (squares.length < MAX_GUESSES) squares.push('⬜');
+    return squares.join('');
+}
+
+function buildShareText(won) {
+    const score = won ? `${previousGuesses.length}/${MAX_GUESSES}` : `X/${MAX_GUESSES}`;
+    return `Langr #${puzzleNumber(currentDate)} 🌍 ${score}\n${emojiRow()}`;
+}
+
+function computeStats() {
+    const results = loadResults();
+    const finished = Object.entries(results).filter(([, r]) => r.status !== 'playing');
+    const wins = finished.filter(([, r]) => r.status === 'won');
+    const distribution = Array(MAX_GUESSES).fill(0);
+    wins.forEach(([, r]) => { distribution[Math.min(r.guesses.length, MAX_GUESSES) - 1]++; });
+
+    // Daily streak: consecutive days won, ending today (or yesterday if today isn't finished yet)
+    let streak = 0;
+    let day = localISODate();
+    if (!(results[day] && results[day].status === 'won')) day = shiftISODate(day, -1);
+    while (results[day] && results[day].status === 'won') {
+        streak++;
+        day = shiftISODate(day, -1);
+    }
+
+    return {
+        played: finished.length,
+        winPct: finished.length ? Math.round(100 * wins.length / finished.length) : 0,
+        streak,
+        distribution
+    };
+}
+
+function renderResultPanel(won) {
+    const panel = document.getElementById('resultPanel');
+    const answer = gameData.todaysLanguage.language;
     const isToday = currentDate === localISODate();
-    
-    const shareText = isToday 
-        ? `🎉 I just guessed today's language correctly on Langr in ${guessCount} guess${guessCount == 1? '' : 'es'}!`
-        : `🎉 I just guessed the ${gameDate} language correctly on Langr in ${guessCount} guess${guessCount == 1? '' : 'es'}!`;
-    
-    const modalText = isToday 
-        ? `You solved today's Langr in <strong>${guessCount} guess${guessCount == 1? '' : 'es'}</strong>!`
-        : `You solved Langr for ${gameDate} in <strong>${guessCount} guess${guessCount == 1? '' : 'es'}</strong>!`;
-    
-    const shareUrl = 'https://raymondtana.github.io/projects/pages/Langr.html';
-    
-    celebration.innerHTML = `
-        <div class="celebration-content">
-            <h2 style="color: #2c3e50; margin-bottom: 20px;">🎉 Congratulations! 🎉</h2>
-            <p style="font-size: 18px; margin-bottom: 10px;">You guessed it correctly!</p>
-            <p style="font-size: 24px; font-weight: 600; color: #3498db;">The language was ${gameData.todaysLanguage.language}!</p>
-            <p style="margin-top: 20px; color: #666;">${modalText}</p>
-            <p style="margin-top: 20px; color: #666;">Your previous guess${previousGuesses.length == 1? '' : 'es'}:<br>${previousGuesses.join(' → ')}</p>
-            <button onclick="location.reload()" style="margin-top: 20px; padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 500;">Play Again</button>
-            <div class="share-section">
-                <div class="share-title">Share your victory!</div>
-                <div class="share-buttons">
-                    <button class="share-btn share-twitter" data-share="twitter">
-                        🐦 Twitter
-                    </button>
-                    <button class="share-btn share-facebook" data-share="facebook">
-                        📘 Facebook
-                    </button>
-                    <button class="share-btn share-linkedin" data-share="linkedin">
-                        💼 LinkedIn
-                    </button>
-                    <button class="share-btn share-reddit" data-share="reddit">
-                        🔴 Reddit
-                    </button>
-                    <button class="share-btn share-copy" data-share="copy">
-                        📋 Copy
-                    </button>
-                </div>
+    const stats = computeStats();
+    const maxBar = Math.max(1, ...stats.distribution);
+    const thisGame = won ? previousGuesses.length - 1 : -1;
+    const headline = won
+        ? (isToday ? `🎉 Solved today's Langr in ${previousGuesses.length}!` : `🎉 Solved #${puzzleNumber(currentDate)} in ${previousGuesses.length}!`)
+        : `😭 Better luck next time`;
+
+    panel.innerHTML = `
+        <div class="result-headline ${won ? 'won' : 'lost'}">${headline}</div>
+        <div class="result-answer">The language was <strong>${escapeHTML(answer)}</strong></div>
+        <div class="result-emoji">${emojiRow()}</div>
+
+        <div class="stats-row">
+            <div class="stat"><div class="stat-num">${stats.played}</div><div class="stat-label">Played</div></div>
+            <div class="stat"><div class="stat-num">${stats.winPct}</div><div class="stat-label">Win %</div></div>
+            <div class="stat"><div class="stat-num">${stats.streak}</div><div class="stat-label">Day streak</div></div>
+        </div>
+        <div class="distribution">
+            ${stats.distribution.map((n, i) => `
+                <div class="dist-row">
+                    <span class="dist-label">${i + 1}</span>
+                    <span class="dist-bar ${i === thisGame ? 'current' : ''}" style="width: ${Math.max(8, 100 * n / maxBar)}%">${n}</span>
+                </div>`).join('')}
+        </div>
+
+        <div class="next-game">
+            Next Langr in <span id="countdown" class="countdown">--:--:--</span>
+        </div>
+
+        <div class="result-actions">
+            <button class="action-btn" id="randomDayBtn">🎲 Play a random past day</button>
+            ${isToday ? '' : '<button class="action-btn secondary" id="todayBtn">📅 Back to today</button>'}
+        </div>
+
+        <div class="share-section">
+            <div class="share-buttons">
+                <button class="share-btn share-twitter" data-share="twitter">𝕏 Post</button>
+                <button class="share-btn share-linkedin" data-share="linkedin">💼 LinkedIn</button>
+                <button class="share-btn share-copy" data-share="copy">📋 Copy</button>
             </div>
         </div>
     `;
-    
-    // Add event listeners to share buttons
-    const shareButtons = celebration.querySelectorAll('[data-share]');
-    shareButtons.forEach(button => {
+    panel.style.display = 'block';
+
+    const shareText = buildShareText(won);
+    panel.querySelectorAll('[data-share]').forEach(button => {
         button.addEventListener('click', function() {
-            const shareType = this.getAttribute('data-share');
-            switch(shareType) {
+            switch (this.getAttribute('data-share')) {
                 case 'twitter':
-                    shareToTwitter(encodeURIComponent(shareText), encodeURIComponent(shareUrl));
-                    break;
-                case 'facebook':
-                    shareToFacebook(encodeURIComponent(shareUrl), encodeURIComponent(shareText));
+                    shareToTwitter(encodeURIComponent(shareText), encodeURIComponent(SHARE_URL));
                     break;
                 case 'linkedin':
-                    shareToLinkedIn(encodeURIComponent(shareUrl), encodeURIComponent(shareText));
-                    break;
-                case 'reddit':
-                    shareToReddit(encodeURIComponent(shareUrl), encodeURIComponent(shareText));
+                    shareToLinkedIn(encodeURIComponent(SHARE_URL));
                     break;
                 case 'copy':
-                    copyToClipboard(shareText + ' ' + shareUrl, this);
+                    copyToClipboard(shareText + '\n' + SHARE_URL, this);
                     break;
             }
         });
     });
-    
-    // Add confetti
+
+    panel.querySelector('#randomDayBtn').addEventListener('click', () => {
+        const date = randomUnplayedDate();
+        if (date) loadGameForDate(date);
+    });
+    const todayBtn = panel.querySelector('#todayBtn');
+    if (todayBtn) todayBtn.addEventListener('click', () => loadGameForDate(localISODate()));
+
+    startCountdown();
+}
+
+function startCountdown() {
+    clearInterval(countdownTimer);
+    const tick = () => {
+        const el = document.getElementById('countdown');
+        if (!el) return clearInterval(countdownTimer);
+        const now = new Date();
+        const midnight = new Date(now);
+        midnight.setHours(24, 0, 0, 0);
+        const secs = Math.max(0, Math.floor((midnight - now) / 1000));
+        const pad = n => String(n).padStart(2, '0');
+        el.textContent = `${pad(Math.floor(secs / 3600))}:${pad(Math.floor(secs / 60) % 60)}:${pad(secs % 60)}`;
+        if (secs === 0) {
+            clearInterval(countdownTimer);
+            el.outerHTML = `<button class="action-btn" onclick="loadGameForDate(localISODate())">Play the new Langr!</button>`;
+        }
+    };
+    tick();
+    countdownTimer = setInterval(tick, 1000);
+}
+
+function launchConfetti() {
+    const layer = document.createElement('div');
+    layer.className = 'confetti-layer';
     for (let i = 0; i < 50; i++) {
         const confetti = document.createElement('div');
         confetti.className = 'confetti';
         confetti.style.left = Math.random() * 100 + '%';
         confetti.style.backgroundColor = ['#3498db', '#27ae60', '#e74c3c', '#f39c12', '#9b59b6'][Math.floor(Math.random() * 5)];
         confetti.style.animationDelay = Math.random() * 0.5 + 's';
-        celebration.appendChild(confetti);
+        layer.appendChild(confetti);
     }
-    
-    document.body.appendChild(celebration);
-}
-
-function showSadCelebration() {
-    const celebration = document.createElement('div');
-    celebration.className = 'celebration';
-    const gameDate = getGameDateText();
-    const isToday = currentDate === localISODate();
-    
-    const shareText = isToday 
-        ? "😭 I couldn't figure out today's language on Langr"
-        : `😭 I couldn't figure out the ${gameDate} language on Langr`;
-    
-    const modalText = isToday 
-        ? "You'll get today's language next time!"
-        : "We can only go up from here!";
-    
-    const shareUrl = 'https://raymondtana.github.io/projects/pages/Langr.html';
-    
-    celebration.innerHTML = `
-        <div class="celebration-content">
-            <h2 style="color: #2c3e50; margin-bottom: 20px;">😭 Better luck next time 😭</h2>
-            <p style="font-size: 18px; margin-bottom: 10px;">${modalText}</p>
-            <p style="font-size: 24px; font-weight: 600; color: #3498db;">The language was ${gameData.todaysLanguage.language}.</p>
-            <p style="margin-top: 20px; color: #666;">Your previous guess${previousGuesses.length == 1? '' : 'es'}:<br>${previousGuesses.length > 0 ? previousGuesses.join(' → ') : 'none'}</p>
-            <button onclick="location.reload()" style="margin-top: 20px; padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 500;">Play Again</button>
-            <div class="share-section">
-                <div class="share-title">Share your attempt!</div>
-                <div class="share-buttons">
-                    <button class="share-btn share-twitter" data-share="twitter">
-                        🐦 Twitter
-                    </button>
-                    <button class="share-btn share-facebook" data-share="facebook">
-                        📘 Facebook
-                    </button>
-                    <button class="share-btn share-linkedin" data-share="linkedin">
-                        💼 LinkedIn
-                    </button>
-                    <button class="share-btn share-reddit" data-share="reddit">
-                        🔴 Reddit
-                    </button>
-                    <button class="share-btn share-copy" data-share="copy">
-                        📋 Copy
-                    </button>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    // Add event listeners to share buttons
-    const shareButtons = celebration.querySelectorAll('[data-share]');
-    shareButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const shareType = this.getAttribute('data-share');
-            switch(shareType) {
-                case 'twitter':
-                    shareToTwitter(encodeURIComponent(shareText), encodeURIComponent(shareUrl));
-                    break;
-                case 'facebook':
-                    shareToFacebook(encodeURIComponent(shareUrl), encodeURIComponent(shareText));
-                    break;
-                case 'linkedin':
-                    shareToLinkedIn(encodeURIComponent(shareUrl), encodeURIComponent(shareText));
-                    break;
-                case 'reddit':
-                    shareToReddit(encodeURIComponent(shareUrl), encodeURIComponent(shareText));
-                    break;
-                case 'copy':
-                    copyToClipboard(shareText + ' ' + shareUrl, this);
-                    break;
-            }
-        });
-    });
-    
-    document.body.appendChild(celebration);
+    document.body.appendChild(layer);
+    setTimeout(() => layer.remove(), 4000);
 }
 
 // Sharing functions
 function shareToTwitter(text, url) {
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+    const twitterUrl = `https://x.com/intent/post?text=${text}&url=${url}`;
     window.open(twitterUrl, '_blank', 'width=600,height=400');
 }
 
-function shareToFacebook(url, text) {
-    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-    window.open(facebookUrl, '_blank', 'width=600,height=400');
-}
-
-function shareToLinkedIn(url, text) {
+function shareToLinkedIn(url) {
     const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
     window.open(linkedinUrl, '_blank', 'width=600,height=400');
 }
 
-function shareToReddit(url, text) {
-    const redditUrl = `https://reddit.com/submit?url=${url}&title=${text}`;
-    window.open(redditUrl, '_blank', 'width=600,height=400');
-}
-
 async function copyToClipboard(text, button) {
+    const originalText = button.innerHTML;
     try {
         await navigator.clipboard.writeText(text);
-        const originalText = button.innerHTML;
-        button.innerHTML = '✅ Copied!';
-        button.classList.add('copied');
-        
-        setTimeout(() => {
-            button.innerHTML = originalText;
-            button.classList.remove('copied');
-        }, 2000);
     } catch (err) {
-        // Fallback for older browsers
+        // Fallback for older browsers / iframes without clipboard permission
         const textArea = document.createElement('textarea');
         textArea.value = text;
         document.body.appendChild(textArea);
         textArea.select();
         document.execCommand('copy');
         document.body.removeChild(textArea);
-        
-        button.innerHTML = '✅ Copied!';
-        setTimeout(() => {
-            button.innerHTML = '📋 Copy';
-        }, 2000);
     }
+    button.innerHTML = '✅ Copied!';
+    button.classList.add('copied');
+    setTimeout(() => {
+        button.innerHTML = originalText;
+        button.classList.remove('copied');
+    }, 2000);
+}
+
+// Keep the embedding iframe sized to the game so it never needs an inner scrollbar
+if (window.parent !== window && 'ResizeObserver' in window) {
+    new ResizeObserver(() => {
+        const container = document.querySelector('.game-container');
+        window.parent.postMessage({ langrHeight: container.offsetHeight + 60 }, '*');
+    }).observe(document.querySelector('.game-container'));
 }
 
 // Start the game
-initGame(); // This will now load CSV data first, then show the first clue
+initGame();
 
 // Instructions modal functions
 function showInstructions() {

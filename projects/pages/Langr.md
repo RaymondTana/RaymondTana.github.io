@@ -8,7 +8,16 @@ nav_exclude: true
 
 You can play the game below:
 
-<iframe src = "/my_assets/html/Langr.html" style = "width : 100%; height : 800px; border : none;"></iframe>
+<iframe id="langr-frame" src = "/my_assets/html/Langr.html" style = "width : 100%; height : 800px; border : none;"></iframe>
+<script>
+  // The game reports its height so the iframe grows with revealed clues instead of scrolling internally
+  window.addEventListener('message', function (e) {
+    var frame = document.getElementById('langr-frame');
+    if (e.source === frame.contentWindow && e.data && e.data.langrHeight) {
+      frame.style.height = Math.max(600, e.data.langrHeight) + 'px';
+    }
+  });
+</script>
 
 ## Implementation
 

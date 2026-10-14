@@ -593,8 +593,8 @@ body {
 
 /* Share button styling */
 .share-section {
-    margin-top: 25px;
-    padding-top: 20px;
+    margin-top: 20px;
+    padding-top: 16px;
     border-top: 1px solid #eee;
 }
 
@@ -631,22 +631,12 @@ body {
 }
 
 .share-twitter {
-    background: #1da1f2;
-    color: white;
-}
-
-.share-facebook {
-    background: #4267b2;
+    background: #000;
     color: white;
 }
 
 .share-linkedin {
     background: #0077b5;
-    color: white;
-}
-
-.share-reddit {
-    background: #ff4500;
     color: white;
 }
 
@@ -860,4 +850,282 @@ body {
     height: 100%;
     opacity: 0;
     cursor: pointer;
+}
+/******* Day navigation *******/
+
+.day-nav {
+    width: 28px;
+    height: 32px;
+    border: 1px solid #dee2e6;
+    background: white;
+    border-radius: 6px;
+    font-size: 20px;
+    line-height: 1;
+    color: #495057;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.day-nav:hover:not(:disabled) {
+    background: #e9ecef;
+}
+
+.day-nav:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+@media (max-width: 480px) {
+    .game-stats {
+        flex-direction: column;
+        gap: 8px;
+        padding: 10px 12px;
+    }
+    .day-nav {
+        height: 28px;
+    }
+}
+
+/******* Previous guesses as chips *******/
+
+.previous-guesses-label {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.guesses-left {
+    font-weight: 500;
+    color: #6c757d;
+}
+
+.previous-guesses-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.no-guesses {
+    color: #999;
+    font-size: 14px;
+}
+
+.guess-chip {
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.guess-chip.wrong {
+    background: #fdecea;
+    color: #c0392b;
+    text-decoration: line-through;
+    text-decoration-color: rgba(192, 57, 43, 0.5);
+}
+
+.guess-chip.correct {
+    background: #e8f6ee;
+    color: #1e8449;
+}
+
+/******* Clues unlocked at game end *******/
+
+.clue.bonus {
+    border-left-color: #f39c12;
+}
+
+.clue-tag {
+    margin-left: 8px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: #fef5e7;
+    color: #b9770e;
+    font-size: 12px;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.text-content.empty {
+    color: #999;
+    font-style: italic;
+}
+
+.answer-card {
+    border-left-color: #27ae60;
+}
+
+.lineage {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.lineage-node {
+    padding: 3px 8px;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+}
+
+.lineage-node:last-child {
+    background: #e8f6ee;
+    border-color: #a9dfbf;
+    font-weight: 600;
+}
+
+.lineage-arrow {
+    color: #adb5bd;
+}
+
+.answer-links {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #6c757d;
+}
+
+.answer-links a {
+    color: #3498db;
+}
+
+/******* Result panel *******/
+
+.result-panel {
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    animation: slideIn 0.5s ease forwards;
+}
+
+.result-headline {
+    font-size: 22px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.result-answer {
+    margin-top: 6px;
+    font-size: 18px;
+    color: #495057;
+}
+
+.result-answer strong {
+    color: #3498db;
+}
+
+.result-emoji {
+    margin-top: 10px;
+    font-size: 22px;
+    letter-spacing: 2px;
+}
+
+.stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    margin-top: 18px;
+}
+
+.stat-num {
+    font-size: 26px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.distribution {
+    max-width: 320px;
+    margin: 14px auto 0;
+}
+
+.dist-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 3px 0;
+    font-size: 13px;
+}
+
+.dist-label {
+    width: 12px;
+    color: #495057;
+}
+
+.dist-bar {
+    background: #95a5a6;
+    color: white;
+    text-align: right;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-weight: 600;
+}
+
+.dist-bar.current {
+    background: #27ae60;
+}
+
+.next-game {
+    margin-top: 18px;
+    font-size: 15px;
+    color: #495057;
+}
+
+.countdown {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.result-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+
+.action-btn {
+    padding: 10px 16px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+    background: #2980b9;
+    transform: translateY(-1px);
+}
+
+.action-btn.secondary {
+    background: white;
+    color: #3498db;
+    border: 1px solid #3498db;
+}
+
+.action-btn.secondary:hover {
+    background: #eaf4fc;
+}
+
+.confetti-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1000;
 }
