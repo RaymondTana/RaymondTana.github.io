@@ -1,7 +1,7 @@
 title: "Raymond Tana"
 description: "My CV and Projects"
 author: "Raymond Tana"
-baseurl: "" 
+baseurl: ""
 custom_css: my_assets/css/custom.css
 og_image: /my_assets/images/RayTeX.png
 logo: /my_assets/images/RayTeX_rec.svg
@@ -29,7 +29,6 @@ defaults:
       share: true
       related: true
 
-
 # use this when remote
 remote_theme: "mmistakes/minimal-mistakes@4.26.2"
 plugins:
@@ -38,3 +37,10 @@ plugins:
 
 # use this when not remote
 # theme: minimal-mistakes-jekyll
+
+# analytics
+analytics:
+  provider: "google-gtag"
+  google:
+    tracking_id: "G-ZG5QV893BR"
+    anonymize_ip: true
