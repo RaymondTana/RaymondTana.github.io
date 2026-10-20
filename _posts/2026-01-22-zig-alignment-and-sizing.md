@@ -8,8 +8,8 @@ tags:
   - Zig
   - Compiler
 header:
-  og_image: /my_assets/images/zig_logo.jpg
-  teaser: /my_assets/images/zig_logo.jpg
+  og_image: /my_assets/images/zig_memory.png
+  teaser: /my_assets/images/zig_memory.png
 ---
 
 I was recently encouraged to watch [A Practical Guide to Applying Data Oriented Design (DoD)](https://www.youtube.com/watch?v=IroPQ150F6c) by Andrew Kelley, the creator of [Zig](https://ziglang.org/)[^1]. Just 10 minutes into the talk, I was confronted with a skill I had never formally learned... the arithmetic behind *memory layout* of types. 

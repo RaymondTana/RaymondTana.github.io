@@ -9,6 +9,9 @@ tags:
   - Algorithms
   - Computability
   - Decidability
+header:
+  og_image: /my_assets/images/halting_problem.png
+  teaser: /my_assets/images/halting_problem.png
 ---
 
 For anyone familiar with programming, it's practically taboo to include anything resembling `while(true)` in one's code. After a while, one might be pretty adept at spotting pitfalls like this when inspecting code. The shocking mathematical fact is that the problem of spotting all the ways in which some code may stall indefinitely is **not** trivial nor subject to automation. We call this phenomenon the undecidability of the Halting Problem.
