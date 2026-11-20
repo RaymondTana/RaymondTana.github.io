@@ -1,6 +1,7 @@
 title: "Raymond Tana"
 description: "My CV and Projects"
 author: "Raymond Tana"
+url: "https://raymondtana.github.io"
 baseurl: ""
 custom_css: my_assets/css/custom.css
 og_image: /my_assets/images/RayTeX.png
@@ -34,6 +35,8 @@ remote_theme: "mmistakes/minimal-mistakes@4.26.2"
 plugins:
   - jekyll-remote-theme
   - jekyll-include-cache
+  - jekyll-sitemap
+  - jekyll-feed
 
 # use this when not remote
 # theme: minimal-mistakes-jekyll
