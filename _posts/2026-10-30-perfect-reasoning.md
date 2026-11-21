@@ -1,6 +1,7 @@
 ---
 title: "Perfect Reasoning is Undecidable"
 date: 2026-10-30
+published: false
 categories:
   - Math
 tags:
